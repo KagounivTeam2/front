@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, #FEA0B8, #FEE8D4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .create-habit-container {
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .back-button {
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .headline {
+    font-size: 24px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  .input-section {
+    margin-bottom: 20px;
+  }
+  
+  .habit-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #FFDADD;
+  }
+  
+  .input-underline {
+    border: none;
+    border-bottom: 2px solid #FE8DA5;
+    margin-top: 5px;
+  }
+  
+  .checkbox-section {
+    margin-bottom: 20px;
+  }
+  
+  .favorite-checkbox {
+    display: flex;
+    align-items: center;
+  }
+  
+  .favorite-checkbox .checkbox {
+    margin-right: 10px;
+  }
+  
+  .schedule-section {
+    margin-bottom: 20px;
+  }
+  
+  .schedule-title {
+    font-size: 20px;
+  }  
