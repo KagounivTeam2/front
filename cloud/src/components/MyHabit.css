@@ -239,3 +239,94 @@
 .complete-button:hover {
     background-color: rgb(255, 255, 255, 0.5);
 }
+
+
+
+
+
+
+
+
+
+
+/* 통계 탭 스타일링 */
+.stat-title {
+    font-size: 24px;
+    color: black;
+    margin-bottom: 10px;
+  }
+  
+  .stat-cloud-box {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .stat-cloud-info {
+    text-align: left;
+  }
+  
+  .stat-cloud-text {
+    font-size: 16px;
+    color: black;
+  }
+  
+  .stat-cloud-count {
+    font-size: 24px;
+    color: #FE8DA5;
+  }
+  
+  .stat-cloud-image {
+    width: 200px;
+    height: auto;
+  }
+  
+  .stat-period-left {
+    font-size: 12px;
+    color: gray;
+    margin-top: 10px;
+  }
+  
+  .stat-subtitle {
+    font-size: 20px;
+    color: black;
+    margin-bottom: 10px;
+  }
+  
+  .stat-success-box {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .stat-success-info {
+    text-align: left;
+  }
+  
+  .stat-success-text {
+    font-size: 16px;
+    color: black;
+  }
+  
+  .stat-success-count {
+    font-size: 24px;
+    color: #FE8DA5;
+  }
+  
+  .stat-success-percent {
+    font-size: 24px;
+    color: #FE8DA5;
+  }
+  
+  .stat-bar {
+    background-color: #FE8DA5;
+    height: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  

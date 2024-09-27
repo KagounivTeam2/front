@@ -63,55 +63,94 @@ function MyHabit() {
         </div>
       </div>
 
-      {/* 습관 추가 및 전체 보기 */}
-      <div className="habit-actions">
-        <Link to="/add-habit" className="add-habit-button"> + 습관 추가</Link>
-        <button 
-          onClick={() => setShowAllHabits(!showAllHabits)} 
-          className="toggle-habits-button"
-        >
-          {showAllHabits ? '습관 숨기기' : '습관 전체보기 ▼'}
-        </button>
-      </div>
+      {/* 나의 습관 탭 내용 */}
+      {selectedTab === 'habit' && (
+        <>
+          {/* 습관 추가 및 전체 보기 */}
+          <div className="habit-actions">
+            <Link to="/add-habit" className="add-habit-button"> + 습관 추가</Link>
+            <button 
+              onClick={() => setShowAllHabits(!showAllHabits)} 
+              className="toggle-habits-button"
+            >
+              {showAllHabits ? '습관 숨기기' : '습관 전체보기 ▼'}
+            </button>
+          </div>
 
-      {/* 습관 타이틀과 기간 */}
-      {selectedHabit && (
-        <div className="habit-info">
-          <h2 className="habit-title-left">{selectedHabit.title}</h2>
-          <p className="habit-dates-left">{selectedHabit.startDate} ~ {selectedHabit.endDate}</p>
-        </div>
-      )}
-
-      {/* 구름 이미지와 습관 정보 */}
-      <div className="cloud">
-        <img src={`/img/${themeSettings[selectedTheme].cloudImage}`} alt="Cloud" />
-      </div>
-
-      {/* 습관 리스트 (토글로 열리는 부분) */}
-      {showAllHabits && (
-        <div className="habit-list">
-          {habits.map((habit, index) => (
-            <div key={index} className="habit-item">
-              <button 
-                onClick={() => handleHabitSelection(habit)} 
-                className={`habit-button ${selectedHabit === habit ? 'selected' : ''}`}
-              >
-                {habit.title}
-              </button>
-              <div className="habit-dates">{habit.startDate} ~ {habit.endDate}</div>
-              <button onClick={() => deleteHabit(index)} className="delete-habit-button">🗑️</button>
+          {/* 습관 타이틀과 기간 */}
+          {selectedHabit && (
+            <div className="habit-info">
+              <h2 className="habit-title-left">{selectedHabit.title}</h2>
+              <p className="habit-dates-left">{selectedHabit.startDate} ~ {selectedHabit.endDate}</p>
             </div>
-          ))}
-        </div>
+          )}
+
+          {/* 구름 이미지와 습관 정보 */}
+          <div className="cloud">
+            <img src={`/img/${themeSettings[selectedTheme].cloudImage}`} alt="Cloud" />
+          </div>
+
+          {/* 습관 리스트 (토글로 열리는 부분) */}
+          {showAllHabits && (
+            <div className="habit-list">
+              {habits.map((habit, index) => (
+                <div key={index} className="habit-item">
+                  <button 
+                    onClick={() => handleHabitSelection(habit)} 
+                    className={`habit-button ${selectedHabit === habit ? 'selected' : ''}`}
+                  >
+                    {habit.title}
+                  </button>
+                  <div className="habit-dates">{habit.startDate} ~ {habit.endDate}</div>
+                  <button onClick={() => deleteHabit(index)} className="delete-habit-button">🗑️</button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* 수행 완료 버튼 */}
+          <button className="complete-button">수행 완료</button>
+          
+          {/* 현재 날짜와 상태 텍스트 */}
+          <div className="complete-status">
+            {today} 진행중
+          </div>
+        </>
       )}
 
-      {/* 수행 완료 버튼 */}
-      <button className="complete-button">수행 완료</button>
-      
-      {/* 현재 날짜와 상태 텍스트 */}
-      <div className="complete-status">
-        {today} 진행중
-      </div>
+      {/* 통계 탭 내용 */}
+      {selectedTab === 'stats' && (
+        <>
+          <h2 className="stat-title">나의 구름</h2>
+          <div className="stat-cloud-box">
+            <div className="stat-cloud-info">
+              <p className="stat-cloud-text">모은 구름</p>
+              <p className="stat-cloud-count">27개</p>
+              <p className="stat-period-left">{selectedHabit?.startDate} ~ {selectedHabit?.endDate}</p>
+            </div>
+            <img src="/img/State_img.png" alt="Cloud" className="stat-cloud-image" />
+          </div>
+
+          <h2 className="stat-subtitle">나의 성공</h2>
+          <div className="stat-success-box">
+            <div className="stat-success-info">
+              <p className="stat-success-text">나의 성공 횟수</p>
+              <p className="stat-success-count">21회</p>
+              <p className="stat-period-left">{selectedHabit?.startDate} ~ {selectedHabit?.endDate}</p>
+            </div>
+            <div className="stat-bar"></div>
+          </div>
+
+          <div className="stat-success-box">
+            <div className="stat-success-info">
+              <p className="stat-success-text">나의 성공 확률</p>
+              <p className="stat-success-percent">78%</p>
+              <p className="stat-period-left">{selectedHabit?.startDate} ~ {selectedHabit?.endDate}</p>
+            </div>
+            <div className="stat-bar"></div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
