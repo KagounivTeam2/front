@@ -157,7 +157,7 @@ function CreateNewHabit() {
                 startDate={startDate}
                 endDate={endDate}
                 minDate={startDate}
-                dateFormat="yyyy.MMdd"
+                dateFormat="yyyy.MM.dd"
                 placeholderText="종료 날짜"
                 className="custom-date-picker"
               />

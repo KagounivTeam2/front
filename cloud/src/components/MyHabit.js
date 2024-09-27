@@ -9,6 +9,9 @@ function MyHabit() {
   const [selectedTheme, setSelectedTheme] = useState(0); // 테마 상태
   const [selectedHabit, setSelectedHabit] = useState(null); // 선택된 습관 정보
 
+  // 현재 날짜 가져오기
+  const today = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' });
+
   useEffect(() => {
     // localStorage에서 습관과 테마 데이터 불러오기
     const savedHabits = JSON.parse(localStorage.getItem('habits')) || [];
@@ -104,6 +107,11 @@ function MyHabit() {
 
       {/* 수행 완료 버튼 */}
       <button className="complete-button">수행 완료</button>
+      
+      {/* 현재 날짜와 상태 텍스트 */}
+      <div className="complete-status">
+        {today} 진행중
+      </div>
     </div>
   );
 }

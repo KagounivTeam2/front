@@ -159,6 +159,34 @@
     width: 100%; /* 가로로 꽉 채워줌 */
 }
 
+/* 타이틀 크기 및 패딩 추가 */
+.habit-info {
+    padding: 1px 0 0 20px; /* 상단과 왼쪽에 패딩 추가 */
+}
+
+.habit-title-left {
+    font-size: 30px; /* 타이틀 크기를 키움 */
+    color: rgb(0, 0, 0); /* 타이틀 색상을 흰색으로 설정 */
+    margin-bottom: 5px; /* 타이틀과 기간 사이 여백 */
+}
+
+
+/* 기간 텍스트 스타일 수정 */
+.habit-dates-left {
+    font-size: 12px; /* 텍스트 크기를 줄임 */
+    color: white; /* 텍스트 색상을 하얀색으로 변경 */
+    text-align: left;
+    margin-top: 5px;
+}
+
+/* 수행 완료 아래 텍스트 */
+.complete-status {
+    font-size: 12px; /* 작게 설정 */
+    color: rgb(0, 0, 0); /* 회색 텍스트 */
+    margin-top: 10px;
+    text-align: center;
+}
+
 .habit-button {
     background: none;
     border: none;
