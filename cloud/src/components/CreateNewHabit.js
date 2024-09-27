@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './CreateNewHabit.css';
@@ -11,8 +11,10 @@ function CreateNewHabit() {
   const [goalCount, setGoalCount] = useState(1); // 목표 횟수 상태
   const [startDate, setStartDate] = useState(null); // 시작 날짜 상태
   const [endDate, setEndDate] = useState(null); // 종료 날짜 상태
+  const [selectedTheme, setSelectedTheme] = useState(0); // 테마 선택 상태
   const maxChars = 20; // 최대 글자수 제한
-  const [selectedTheme, setSelectedTheme] = useState(null); // 테마 선택 상태
+  const navigate = useNavigate();
+
 
   // 글자 초기화 함수
   const clearHabitName = () => {
@@ -28,6 +30,35 @@ function CreateNewHabit() {
   const selectGoalOption = (isPeriod) => {
     setIsGoalPeriod(isPeriod);
     setIsDropdownOpen(false); // 선택 후 드롭다운 닫기
+  };
+
+  // 습관 생성 함수
+  const createHabit = () => {
+    if (habitName && startDate && endDate) {
+      const newHabit = {
+        title: habitName,
+        startDate: startDate.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' }),
+        endDate: endDate.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' }),
+        theme: selectedTheme
+      };
+
+      // 기존에 저장된 습관 리스트 불러오기
+      const savedHabits = JSON.parse(localStorage.getItem('habits')) || [];
+      if (savedHabits.length >= 5) {
+        alert('습관은 최대 5개까지만 생성할 수 있습니다.');
+        return;
+      }
+      savedHabits.push(newHabit); // 새 습관 추가
+      localStorage.setItem('habits', JSON.stringify(savedHabits)); // 습관 리스트 저장
+
+      // 테마 저장
+      localStorage.setItem('selectedTheme', selectedTheme);
+
+      // MyHabit 페이지로 이동
+      navigate('/my-habit');
+    } else {
+      alert('모든 필드를 입력해주세요.');
+    }
   };
 
   // 테마 선택 함수
@@ -58,8 +89,7 @@ function CreateNewHabit() {
             className="habit-input"
             maxLength={maxChars}
           />
-          {/* X 버튼으로 글자 초기화 */}
-          <button className="clear-button" onClick={clearHabitName}>✕</button>
+          <button className="clear-button" onClick={() => setHabitName('')}>✕</button>
         </div>
       </div>
 
@@ -169,7 +199,7 @@ function CreateNewHabit() {
       </div>
 
       {/* 습관 생성하기 버튼 */}
-      <button className="create-habit-button">습관 생성하기</button>
+      <button onClick={createHabit} className="create-habit-button">습관 생성하기</button>
     </div>
   );
 }

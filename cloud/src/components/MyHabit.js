@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './MyHabit.css'; // CSS 파일 연결
+import './MyHabit.css';
 
 function MyHabit() {
   const [selectedTab, setSelectedTab] = useState('habit'); // 탭 상태 (나의 습관 or 통계)
   const [showAllHabits, setShowAllHabits] = useState(false); // 습관 전체보기 토글 상태
-  const [habits, setHabits] = useState([
-    { id: 1, title: '하루에 물 1L 마시기', startDate: '2024.01.01', endDate: '2024.01.07' },
-    { id: 2, title: '아침 스트레칭 하기', startDate: '2024.01.02', endDate: '2024.01.09' },
-    { id: 3, title: '저녁 명상하기', startDate: '2024.01.03', endDate: '2024.01.10' },
-    { id: 4, title: '책 20페이지 읽기', startDate: '2024.01.04', endDate: '2024.01.11' },
-    { id: 5, title: '주 3회 운동하기', startDate: '2024.01.05', endDate: '2024.01.12' },
-  ]);
-  
-  const [selectedTheme, setSelectedTheme] = useState(0); // 0: Day, 1: Evening, 2: Night
-  
+  const [habits, setHabits] = useState([]); // 습관 리스트
+  const [selectedTheme, setSelectedTheme] = useState(0); // 테마 상태
+
+  useEffect(() => {
+    // localStorage에서 습관과 테마 데이터 불러오기
+    const savedHabits = JSON.parse(localStorage.getItem('habits')) || [];
+    const savedTheme = parseInt(localStorage.getItem('selectedTheme'), 10) || 0;
+    setHabits(savedHabits);
+    setSelectedTheme(savedTheme);
+  }, []);
+
   // 테마에 따라 배경과 구름 이미지를 변경
   const themeSettings = [
     { background: 'linear-gradient(to bottom, #79CCFF, #D5FCFF)', cloudImage: 'Day_cloud.png' },  // Day 테마
@@ -24,7 +25,9 @@ function MyHabit() {
 
   // 습관 삭제 함수
   const deleteHabit = (id) => {
-    setHabits(habits.filter(habit => habit.id !== id));
+    const updatedHabits = habits.filter((_, index) => index !== id);
+    setHabits(updatedHabits);
+    localStorage.setItem('habits', JSON.stringify(updatedHabits)); // 습관 리스트 업데이트
   };
 
   return (
@@ -63,27 +66,17 @@ function MyHabit() {
       {/* 습관 리스트 */}
       {showAllHabits && (
         <div className="habit-list">
-          {habits.map(habit => (
-            <div key={habit.id} className="habit-item">
+          {habits.map((habit, index) => (
+            <div key={index} className="habit-item">
               <div className="habit-title">
                 {habit.title}
-                <button onClick={() => deleteHabit(habit.id)} className="delete-habit-button">🗑️</button>
+                <button onClick={() => deleteHabit(index)} className="delete-habit-button">🗑️</button>
               </div>
               <div className="habit-dates">{habit.startDate} ~ {habit.endDate}</div>
             </div>
           ))}
         </div>
       )}
-
-      {/* 테마 변경 버튼 */}
-      <div className="theme-section">
-        <h2 className="theme-title">테마 변경</h2>
-        <div className="theme-buttons">
-          <button onClick={() => setSelectedTheme(0)} className={selectedTheme === 0 ? 'active' : ''}>Day</button>
-          <button onClick={() => setSelectedTheme(1)} className={selectedTheme === 1 ? 'active' : ''}>Evening</button>
-          <button onClick={() => setSelectedTheme(2)} className={selectedTheme === 2 ? 'active' : ''}>Night</button>
-        </div>
-      </div>
 
       {/* 수행 완료 버튼 */}
       <button className="complete-button">수행 완료</button>
