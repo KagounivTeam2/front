@@ -11,7 +11,7 @@ function StartPage() {
       <p>당신의 습관을 어쩌구</p>
       <p>대충 감성있는 말 적기</p>
       <div className="buttons">
-        <Link to="/my-habits">
+        <Link to="/my-habit">
           <button className="habit-btn">나의 습관</button>
         </Link>
         <Link to="/add-habit">
