@@ -3,11 +3,18 @@ import { Link } from 'react-router-dom';
 import './CreateNewHabit.css';
 
 function CreateNewHabit() {
+  const [habitName, setHabitName] = useState(''); // 습관 이름 상태
   const [isGoalPeriod, setIsGoalPeriod] = useState(true); // 목표 기간/목표 횟수 상태
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // 드롭다운 토글 상태
   const [goalCount, setGoalCount] = useState(1); // 목표 횟수 상태
   const [startDate, setStartDate] = useState(''); // 시작 날짜 상태
   const [endDate, setEndDate] = useState(''); // 종료 날짜 상태
+  const maxChars = 20; // 최대 글자수 제한
+
+  // 글자 초기화 함수
+  const clearHabitName = () => {
+    setHabitName('');
+  };
 
   // 목표 기간/목표 횟수 전환
   const toggleGoalSelection = () => {
@@ -30,8 +37,23 @@ function CreateNewHabit() {
 
       {/* 습관 이름 입력 */}
       <div className="input-section">
-        <label htmlFor="habit-name">나만의 습관에 이름을 붙여주세요</label>
-        <input type="text" id="habit-name" maxLength="20" className="habit-input" />
+        <div className="input-wrapper">
+          {/* 글자수 현황 */}
+          <span className="char-count">{habitName.length}/{maxChars}</span>
+          {/* 텍스트 입력 필드 */}
+          <input
+            type="text"
+            value={habitName}
+            onChange={(e) => setHabitName(e.target.value.slice(0, maxChars))} // 글자수 제한
+            placeholder="나만의 습관에 이름을 붙여주세요"
+            className="habit-input"
+            maxLength={maxChars}
+          />
+          {/* X 버튼으로 글자 초기화 */}
+          {habitName.length > 0 && (
+            <button className="clear-button" onClick={clearHabitName}>✕</button>
+          )}
+        </div>
         <hr className="input-underline" />
       </div>
 
@@ -39,7 +61,7 @@ function CreateNewHabit() {
       <div className="checkbox-section">
         <label className="favorite-checkbox">
           <input type="checkbox" className="checkbox" />
-          즐겨찾기에 저장하기
+          즐겨찾기 저장하기
         </label>
       </div>
 
@@ -89,6 +111,7 @@ function CreateNewHabit() {
       {/* 목표 횟수 선택 */}
       {!isGoalPeriod && !isDropdownOpen && (
         <div className="goal-count">
+          <label>목표 횟수</label>
           <div className="counter">
             <button onClick={() => setGoalCount(Math.max(1, goalCount - 1))}>-</button>
             <span>{goalCount}</span>
