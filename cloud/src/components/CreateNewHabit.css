@@ -9,7 +9,7 @@ html, body {
 }
 .create-habit-container {
   width: 80%; /* 가로 너비를 전체로 확장 */
-  max-width: 600px; /* 최대 가로 너비를 설정하여 지나치게 넓어지지 않게 함 */
+  max-width: 400px; /* 최대 가로 너비를 설정하여 지나치게 넓어지지 않게 함 */
   min-height: 80vh; /* 화면 높이의 80% 이상을 차지하도록 설정 */
   padding: 90px 50px; /* 위아래 패딩을 추가하여 내용이 늘어나도록 함 */
   background-color: #FAFAFA; /* 컨테이너 배경을 흰색으로 설정 */

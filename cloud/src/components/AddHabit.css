@@ -2,9 +2,9 @@
     background-color: #FAFAFA; /* 전체 배경색 */
     padding: 20px;
     border-radius: 8px;
-    max-width: 600px;
     margin: auto;
-    
+    max-width: 400px; /* 최대 가로 너비를 설정하여 지나치게 넓어지지 않게 함 */
+
   }
   
   .sub-title {
