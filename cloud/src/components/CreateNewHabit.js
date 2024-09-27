@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import './CreateNewHabit.css';
 
 function CreateNewHabit() {
@@ -7,9 +9,10 @@ function CreateNewHabit() {
   const [isGoalPeriod, setIsGoalPeriod] = useState(true); // 목표 기간/목표 횟수 상태
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // 드롭다운 토글 상태
   const [goalCount, setGoalCount] = useState(1); // 목표 횟수 상태
-  const [startDate, setStartDate] = useState(''); // 시작 날짜 상태
-  const [endDate, setEndDate] = useState(''); // 종료 날짜 상태
+  const [startDate, setStartDate] = useState(null); // 시작 날짜 상태
+  const [endDate, setEndDate] = useState(null); // 종료 날짜 상태
   const maxChars = 20; // 최대 글자수 제한
+  const [selectedTheme, setSelectedTheme] = useState(null); // 테마 선택 상태
 
   // 글자 초기화 함수
   const clearHabitName = () => {
@@ -25,6 +28,11 @@ function CreateNewHabit() {
   const selectGoalOption = (isPeriod) => {
     setIsGoalPeriod(isPeriod);
     setIsDropdownOpen(false); // 선택 후 드롭다운 닫기
+  };
+
+  // 테마 선택 함수
+  const selectTheme = (index) => {
+    setSelectedTheme(index); // 클릭된 테마의 인덱스를 저장
   };
 
   return (
@@ -95,20 +103,38 @@ function CreateNewHabit() {
         <div className="goal-period">
           <div className="date-section">
             <div className="date-input">
-              <input
-                type="date"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                dateFormat="yyyy.MM.dd"
+                placeholderText="시작 날짜"
+                className="custom-date-picker"
               />
-              <span className="calendar-icon">📅</span>
+              <span className="calendar-icon-wrapper">
+                <span className="calendar-background"></span> {/* 반투명 정사각형 배경 */}
+                <span className="calendar-icon">📅</span> {/* 캘린더 아이콘 */}
+              </span>
             </div>
+            <span className="date-separator"> ~ </span>
             <div className="date-input">
-              <input
-                type="date"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
+              <DatePicker
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+                dateFormat="yyyy.MMdd"
+                placeholderText="종료 날짜"
+                className="custom-date-picker"
               />
-              <span className="calendar-icon">📅</span>
+              <span className="calendar-icon-wrapper">
+                <span className="calendar-background"></span> {/* 반투명 정사각형 배경 */}
+                <span className="calendar-icon">📅</span> {/* 캘린더 아이콘 */}
+              </span>
             </div>
           </div>
         </div>
@@ -125,6 +151,22 @@ function CreateNewHabit() {
           </div>
         </div>
       )}
+
+      {/* 테마 타이틀 및 선택 박스 */}
+      <div className="theme-section">
+        <h2 className="theme-title">테마</h2>
+        <div className="theme-box-container">
+          {[0, 1, 2].map((index) => (
+            <div
+              key={index}
+              className={`theme-box theme-${index + 1} ${selectedTheme === index ? 'active' : ''}`}
+              onClick={() => selectTheme(index)}
+            >
+              <span className="theme-check">{selectedTheme === index ? '✔' : ''}</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* 습관 생성하기 버튼 */}
       <button className="create-habit-button">습관 생성하기</button>
