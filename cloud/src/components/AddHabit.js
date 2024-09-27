@@ -1,6 +1,6 @@
 import React from 'react';
 import './AddHabit.css';
-import { useNavigate } from 'react-router-dom'; // useNavigate 훅을 임포트
+import { Link, useNavigate } from 'react-router-dom'; // useNavigate 훅을 임포트
 
 const AddHabit = () => {
   const [habitName, setHabitName] = React.useState('');
@@ -17,12 +17,12 @@ const AddHabit = () => {
 
   return (
     <div className="add-habit-container">
-      <div className="header">
-        <button className="back-button" onClick={handleBackButtonClick}>
-          &lt; {/* < 버튼 */}
-        </button>
-        <h1 className="add-habit-title">습관 추가</h1>
-      </div>
+      {/* 상단 헤더 */}
+      <header className="header">
+        <Link to="/my-habit" className="back-button">&lt;</Link>
+        <h1 className="headline">습관 추가</h1>
+      </header>
+
       <h2 className="sub-title">즐겨찾는 습관</h2>
       <div className="favorite-habit-box">
         {["커피 하루에 한 잔 이상 금지", "주말마다 동네 산 오르기", "아침 든든히 챙겨먹기"].map((habit, index) => (
