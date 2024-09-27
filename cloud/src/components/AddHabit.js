@@ -5,8 +5,14 @@ import { useNavigate } from 'react-router-dom'; // useNavigate 훅을 임포트
 const AddHabit = () => {
   const [habitName, setHabitName] = React.useState('');
   const navigate = useNavigate(); // navigate 함수 생성
+
   const handleBackButtonClick = () => {
     navigate('/'); // 시작 페이지로 이동
+  };
+
+  const handleDirectInputClick = () => {
+    setHabitName(''); // 습관 이름 초기화
+    navigate('/create-habit'); // CreateHabit.js로 이동
   };
 
   return (
@@ -48,7 +54,7 @@ const AddHabit = () => {
         ))}
       </div>
 
-      <button className="input-button" onClick={() => setHabitName('')}>
+      <button className="input-button" onClick={handleDirectInputClick}>
         직접 입력
       </button>
     </div>

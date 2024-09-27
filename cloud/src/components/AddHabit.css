@@ -126,7 +126,7 @@
   
   .back-button {
     position: absolute; /* 절대 위치로 이동 */
-    right: 100px; /* 왼쪽으로 간격 설정 */
+    left: 100px; /* 왼쪽으로 간격 설정 */
     background: none; /* 버튼 배경 제거 */
     border: none; /* 버튼 테두리 제거 */
     font-size: 20px; /* 버튼 글씨 크기 조정 */
