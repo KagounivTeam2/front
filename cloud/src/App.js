@@ -14,12 +14,12 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<StartPage />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/add-habit" element={<AddHabit />} />
         <Route path="/create-habit" element={<CreateNewHabit />} />
         <Route path="/my-habit" element={<MyHabit />} />
-        <Route path="/home" element={<Home/>} />
+        <Route path="/home" element={<Home />} />
         {/* 다른 경로 추가 가능 */}
       </Routes>
     </Router>
