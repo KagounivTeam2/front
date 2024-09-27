@@ -1,5 +1,11 @@
+body {
+  margin: 0; /* 기본 여백 제거 */
+  height: 100vh; /* 전체 높이 설정 */
+  background: linear-gradient(to bottom, #FEA0B8, #FEE8D4); /* 전체 배경 그라데이션 설정 */
+}
+
+
 .signup-container {
-  background: linear-gradient(to bottom, #FEA0B8, #FEE8D4);
   height: 100vh;
   display: flex;
   flex-direction: column;
