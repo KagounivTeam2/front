@@ -1,16 +1,21 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './pages/Home';
-import HabitView from './pages/HabitView';
-import StatisticsView from './pages/StatisticsView';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import StartPage from './components/StartPage';
+import Login from './components/Login';
+import AddHabit from './components/AddHabit';
+import Home from './components/Home';
+
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/habit" component={HabitView} />
-        <Route path="/statistics" component={StatisticsView} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<StartPage />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/add-habit" element={<AddHabit />} />
+        <Route path="/home" element={<Home />} />
+        {/* 다른 경로 추가 가능 */}
+      </Routes>
     </Router>
   );
 }
