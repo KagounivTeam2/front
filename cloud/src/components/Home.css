@@ -1,0 +1,31 @@
+body {
+  margin: 0; /* 기본 여백 제거 */
+  height: 100vh; /* 전체 높이 설정 */
+  background: linear-gradient(to bottom, #FEA0B8, #FEE8D4); /* 전체 배경 그라데이션 설정 */
+}
+
+.home-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-btn, .signup-btn {
+  background-color: rgba(255, 255, 255, 0.8); /* 약간 투명한 흰색 */
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  width: 150px; /* 버튼의 고정된 너비 설정 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
