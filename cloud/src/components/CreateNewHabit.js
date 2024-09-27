@@ -35,8 +35,9 @@ function CreateNewHabit() {
         <h1 className="headline">습관 추가</h1>
       </header>
 
-      {/* 습관 이름 입력 */}
+      {/* 습관명 타이틀 */}
       <div className="input-section">
+        <label className="input-title">습관명</label> {/* 습관명 타이틀 추가 */}
         <div className="input-wrapper">
           {/* 글자수 현황 */}
           <span className="char-count">{habitName.length}/{maxChars}</span>
@@ -50,11 +51,8 @@ function CreateNewHabit() {
             maxLength={maxChars}
           />
           {/* X 버튼으로 글자 초기화 */}
-          {habitName.length > 0 && (
-            <button className="clear-button" onClick={clearHabitName}>✕</button>
-          )}
+          <button className="clear-button" onClick={clearHabitName}>✕</button>
         </div>
-        <hr className="input-underline" />
       </div>
 
       {/* 즐겨찾기 저장하기 */}
@@ -63,6 +61,14 @@ function CreateNewHabit() {
           <input type="checkbox" className="checkbox" />
           즐겨찾기 저장하기
         </label>
+      </div>
+
+      {/* 일정 타이틀 및 경고문구 (나란히 배치) */}
+      <div className="schedule-section">
+        <div className="schedule-wrapper"> {/* 일정과 경고문구를 Flex로 감쌈 */}
+          <label className="schedule-title">일정</label> {/* 일정 타이틀 추가 */}
+          <p className="warning-message">목표 기간은 최대 7일까지만 설정할 수 있어요</p> {/* 회색 경고문구 추가 */}
+        </div>
       </div>
 
       {/* 목표 기간/목표 횟수 토글 */}
@@ -89,20 +95,20 @@ function CreateNewHabit() {
         <div className="goal-period">
           <div className="date-section">
             <div className="date-input">
-              <span className="calendar-icon">📅</span>
               <input
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
               />
+              <span className="calendar-icon">📅</span>
             </div>
             <div className="date-input">
-              <span className="calendar-icon">📅</span>
               <input
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
               />
+              <span className="calendar-icon">📅</span>
             </div>
           </div>
         </div>
