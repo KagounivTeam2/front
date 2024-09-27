@@ -26,6 +26,10 @@ body {
 .start-container {
   text-align: center;
   padding: 3px;
+  max-width: 400px; /* 최대 가로 너비를 설정하여 지나치게 넓어지지 않게 함 */
+  min-width: 54.2vh;
+  min-height: 96vh; /* 화면 높이의 80% 이상을 차지하도록 설정 */
+  
 }
 
 .buttons {
