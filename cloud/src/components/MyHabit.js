@@ -7,6 +7,7 @@ function MyHabit() {
   const [showAllHabits, setShowAllHabits] = useState(false); // 습관 전체보기 토글 상태
   const [habits, setHabits] = useState([]); // 습관 리스트
   const [selectedTheme, setSelectedTheme] = useState(0); // 테마 상태
+  const [selectedHabit, setSelectedHabit] = useState(null); // 선택된 습관 정보
 
   useEffect(() => {
     // localStorage에서 습관과 테마 데이터 불러오기
@@ -14,6 +15,9 @@ function MyHabit() {
     const savedTheme = parseInt(localStorage.getItem('selectedTheme'), 10) || 0;
     setHabits(savedHabits);
     setSelectedTheme(savedTheme);
+    if (savedHabits.length > 0) {
+      setSelectedHabit(savedHabits[0]); // 첫 번째 습관을 기본 선택
+    }
   }, []);
 
   // 테마에 따라 배경과 구름 이미지를 변경
@@ -28,6 +32,12 @@ function MyHabit() {
     const updatedHabits = habits.filter((_, index) => index !== id);
     setHabits(updatedHabits);
     localStorage.setItem('habits', JSON.stringify(updatedHabits)); // 습관 리스트 업데이트
+  };
+
+  // 습관 선택 시 테마와 정보를 변경하는 함수
+  const handleHabitSelection = (habit) => {
+    setSelectedHabit(habit);
+    setSelectedTheme(habit.theme);
   };
 
   return (
@@ -52,27 +62,41 @@ function MyHabit() {
 
       {/* 습관 추가 및 전체 보기 */}
       <div className="habit-actions">
-        <Link to="/add-habit" className="add-habit-button">습관 추가</Link>
-        <button onClick={() => setShowAllHabits(!showAllHabits)} className="toggle-habits-button">
-          {showAllHabits ? '습관 숨기기' : '습관 전체보기'}
+        <Link to="/add-habit" className="add-habit-button"> + 습관 추가</Link>
+        <button 
+          onClick={() => setShowAllHabits(!showAllHabits)} 
+          className="toggle-habits-button"
+        >
+          {showAllHabits ? '습관 숨기기' : '습관 전체보기 ▼'}
         </button>
       </div>
 
-      {/* 구름 이미지 */}
+      {/* 습관 타이틀과 기간 */}
+      {selectedHabit && (
+        <div className="habit-info">
+          <h2 className="habit-title-left">{selectedHabit.title}</h2>
+          <p className="habit-dates-left">{selectedHabit.startDate} ~ {selectedHabit.endDate}</p>
+        </div>
+      )}
+
+      {/* 구름 이미지와 습관 정보 */}
       <div className="cloud">
         <img src={`/img/${themeSettings[selectedTheme].cloudImage}`} alt="Cloud" />
       </div>
 
-      {/* 습관 리스트 */}
+      {/* 습관 리스트 (토글로 열리는 부분) */}
       {showAllHabits && (
         <div className="habit-list">
           {habits.map((habit, index) => (
             <div key={index} className="habit-item">
-              <div className="habit-title">
+              <button 
+                onClick={() => handleHabitSelection(habit)} 
+                className={`habit-button ${selectedHabit === habit ? 'selected' : ''}`}
+              >
                 {habit.title}
-                <button onClick={() => deleteHabit(index)} className="delete-habit-button">🗑️</button>
-              </div>
+              </button>
               <div className="habit-dates">{habit.startDate} ~ {habit.endDate}</div>
+              <button onClick={() => deleteHabit(index)} className="delete-habit-button">🗑️</button>
             </div>
           ))}
         </div>
