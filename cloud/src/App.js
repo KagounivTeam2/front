@@ -15,13 +15,13 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/home" element={<Home />} />
         <Route path="/" element={<StartPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/add-habit" element={<AddHabit />} />
         <Route path="/create-habit" element={<CreateNewHabit />} />
         <Route path="/my-habit" element={<MyHabit />} />
-        <Route path="/home" element={<Home />} />
         <Route path="/mypage" element={<MyPage />} />
 
         {/* 다른 경로 추가 가능 */}

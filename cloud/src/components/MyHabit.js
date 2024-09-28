@@ -169,6 +169,8 @@ function MyHabit() {
       className="my-habit-container"
       style={{ background: themeSettings[selectedTheme].background }} // 배경 그라데이션 변경
     >
+      <div className="my-habit-wrapper">
+
       {/* 상단 헤더 */}
       <header className="header">
         <Link to="/" className="back-button">
@@ -271,12 +273,6 @@ function MyHabit() {
             </div>
           )}
 
-
-
-          {/* 현재 날짜와 상태 텍스트 */}
-          <div className="complete-status">
-            {new Date().toLocaleDateString()} 진행중
-          </div>
         </>
       )}
 
@@ -319,10 +315,11 @@ function MyHabit() {
                 {selectedHabit?.startDate} ~ {selectedHabit?.endDate}
               </p>
             </div>
-            <div className="stat-bar"></div>
+            <div className="stat-bar"></div>``
           </div>
         </>
       )}
+      </div>
     </div>
   );
 }
