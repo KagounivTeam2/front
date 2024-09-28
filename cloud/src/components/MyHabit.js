@@ -101,7 +101,7 @@ function MyHabit() {
               수행 완료
             </button>
           )}
-          {completed && <button className="complete-button">✔ 완료</button>}
+          {completed && <button className="complete-button">✔</button>}
 
           <div className="complete-status">{today} 진행중</div>
         </>
