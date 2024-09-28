@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
+import CloudBackground from './CloudBackground'; // 구름 컴포넌트 불러오기
 
 function Login() {
 
@@ -64,8 +65,22 @@ function Login() {
 
   return (
     <div className="login-container" style={{ background }}>  
+      {/* 구름 배경 추가 */}
+      <CloudBackground />
+
       {/* 로고 추가 */}
       <img src={process.env.PUBLIC_URL + "/img/Logo_img.png"} alt="Logo" className="logo-image" />
+
+      {/* 경고 문구를 아이디 입력 박스 위에 표시 */}
+      <div id="error-msg-container">
+        {error && (
+          <p id="error-msg">
+            <img src={process.env.PUBLIC_URL + "/img/icon/warning-triangle.png"} alt="Warning" />
+            <span>{error}</span>
+          </p>
+        )}
+      </div>
+
 
       {/* 아이디 입력 필드 */}
       <div className="input-container">
@@ -91,14 +106,6 @@ function Login() {
         <div className="char-count-login">{password.length}/20</div>
       </div>
       
-      {/* 에러 메시지 */}
-      {error && (
-        <p className="error-msg">
-          <img src={process.env.PUBLIC_URL + "/img/icon/warning-triangle.png"} alt="Warning" />
-          <span>{error}</span>
-        </p>
-      )}
-
       {/* 시작하기 버튼 */}
       <button onClick={handleLogin} className="login-button">시작하기</button>
     </div>

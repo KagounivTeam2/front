@@ -1,0 +1,50 @@
+/* 구름 애니메이션 관련 CSS */
+.cloud-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* 구름이 뒤에 있어야 하기 때문에 z-index 낮게 설정 */
+  }
+  
+  .cloud {
+    position: absolute;
+    width: 25%; /* 네 개의 구름을 세로로 배치하기 위해 각 구름의 너비를 25%로 설정 */
+    height: 25%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: moveClouds 30s linear infinite;
+  }
+  
+  .cloud:nth-child(1) {
+    top: 10%;
+    left: -25%;
+  }
+  
+  .cloud:nth-child(2) {
+    top: 35%;
+    left: -25%;
+  }
+  
+  .cloud:nth-child(3) {
+    top: 60%;
+    left: -25%;
+  }
+  
+  .cloud:nth-child(4) {
+    top: 85%;
+    left: -25%;
+  }
+  
+  /* 구름이 지그재그로 무한히 움직이는 애니메이션 */
+  @keyframes moveClouds {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(130%);
+    }
+  }
+  
