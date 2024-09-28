@@ -13,8 +13,6 @@ import MyPage from './components/MyPage';
 
 function App() {
   return (
-    <>
-    
     <Router>
       <Routes>
         <Route path="/" element={<StartPage />} />
@@ -29,9 +27,6 @@ function App() {
         {/* 다른 경로 추가 가능 */}
       </Routes>
     </Router>
-    </>
-    
-    
   );
 }
 
