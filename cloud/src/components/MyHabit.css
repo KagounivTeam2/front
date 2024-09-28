@@ -31,14 +31,14 @@
 /* 구름 이미지 */
 .cloud {
     position: relative;
-    margin: 1vh auto 0 auto;
+    margin: 6vh auto 0 auto;
     animation: float 5s ease-in-out infinite;
     display: flex;
     justify-content: center;
 }
 
 .cloud img {
-    width: 450px;
+    width: 400px;
     height: auto;
 }
 
@@ -232,8 +232,9 @@
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin: 3vh auto 0 auto; /* 상단에 50px의 여백을 추가하여 버튼을 아래로 내림 */
+    margin: 11vh auto 0 auto; /* 상단에 50px의 여백을 추가하여 버튼을 아래로 내림 */
     display: block; /* 블록 요소로 변환 */
+    font-weight: bold; /* 텍스트에 볼드 효과 추가 */
 }
 
 .complete-button:hover {

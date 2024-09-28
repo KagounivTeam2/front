@@ -12,10 +12,17 @@ function MyHabit() {
   // 현재 날짜 가져오기
   const today = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' });
 
+  // 더미 습관 데이터
+  const dummyHabits = [
+    { title: '하루 1L 물 마시기', startDate: '2023.09.01', endDate: '2023.09.07', theme: 0 },
+    { title: '매일 아침 운동하기', startDate: '2023.09.08', endDate: '2023.09.14', theme: 1 },
+    { title: '저녁에 명상하기', startDate: '2023.09.15', endDate: '2023.09.21', theme: 2 }
+  ];
+
   useEffect(() => {
-    // localStorage에서 습관과 테마 데이터 불러오기
-    const savedHabits = JSON.parse(localStorage.getItem('habits')) || [];
-    const savedTheme = parseInt(localStorage.getItem('selectedTheme'), 10) || 0;
+    // localStorage에서 습관과 테마 데이터 불러오기 (혹은 더미 데이터를 설정)
+    const savedHabits = JSON.parse(localStorage.getItem('habits')) || dummyHabits; // 더미 데이터로 초기화
+    const savedTheme = parseInt(localStorage.getItem('selectedTheme'), 10) || dummyHabits[0].theme;
     setHabits(savedHabits);
     setSelectedTheme(savedTheme);
     if (savedHabits.length > 0) {
