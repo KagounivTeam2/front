@@ -2,6 +2,8 @@ import React from 'react';
 import './AddHabit.css';
 import { Link, useNavigate } from 'react-router-dom'; // useNavigate 훅을 임포트
 
+
+
 const AddHabit = () => {
   const [habitName, setHabitName] = React.useState('');
   const navigate = useNavigate(); // navigate 함수 생성

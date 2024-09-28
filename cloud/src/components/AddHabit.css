@@ -1,3 +1,8 @@
+body {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+
 .add-habit-container {
   background-color: #FAFAFA; /* 전체 배경색 */
   padding: 20px;

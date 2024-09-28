@@ -120,9 +120,15 @@ function MyHabit() {
               수행 완료
             </button>
           )}
-          {completed && <button className="complete-button">✔ 완료</button>}
+          {completed && <button className="complete-button">✔</button>}
 
-          <div className="complete-status">{today} 진행중</div>
+          {/* 완료 여부에 따른 상태 텍스트 변경 */}
+          {/* 비가 내리고 있을 때는 텍스트 숨김 */}
+          {!isRaining && (
+            <div className="complete-status">
+              {completed ? "달성 완료" : `${today} 진행중`}
+            </div>
+          )}
         </>
       )}
 
