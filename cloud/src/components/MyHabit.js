@@ -174,7 +174,7 @@ function MyHabit() {
       {/* 상단 헤더 */}
       <header className="header">
         <Link to="/" className="back-button">
-          &lt; 로고
+          &lt; 
         </Link>
       </header>
 
