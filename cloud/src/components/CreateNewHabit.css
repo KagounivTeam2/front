@@ -5,8 +5,13 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+body, h1, h2, h3, p, button, input, textarea {
   font-family: 'Nanum Gothic', sans-serif;
 }
+
+
 .create-habit-container {
   width: 80%; /* 가로 너비를 전체로 확장 */
   max-width: 400px; /* 최대 가로 너비를 설정하여 지나치게 넓어지지 않게 함 */

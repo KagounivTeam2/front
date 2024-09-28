@@ -1,4 +1,4 @@
-body {
+body, h1, h2, h3, p, button, input, textarea {
   font-family: 'Nanum Gothic', sans-serif;
 }
 
@@ -7,7 +7,6 @@ body {
 .my-habit-container {
     position: relative;
     padding: 20px;
-    font-family: Arial, sans-serif;
     transition: background 0.5s ease;
     max-width: 400px;
     min-width: 50vh;
@@ -285,8 +284,8 @@ body {
   }
   
   .stat-cloud-image {
-    width: 200px;
-    height: auto;
+    width: auto;
+    height: 130px;
   }
   
   .stat-period-left {

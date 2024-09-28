@@ -3,6 +3,9 @@ body {
   height: 100vh;
   background: linear-gradient(to bottom, #FEA0B8, #FEE8D4);
   display: flex;
+}
+
+body, h1, h2, h3, p, button, input, textarea {
   font-family: 'Nanum Gothic', sans-serif;
 }
 
