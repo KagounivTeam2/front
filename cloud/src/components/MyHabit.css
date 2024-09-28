@@ -1,5 +1,5 @@
 body, h1, h2, h3, p, button, input, textarea {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Apple SD Gothic Neo', sans-serif;
 }
 
 
@@ -305,12 +305,17 @@ body, h1, h2, h3, p, button, input, textarea {
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
+    display: flex; /* 플렉스박스 설정 */
+    justify-content: space-between; /* 내부 요소들을 양쪽 끝에 배치 */
+    align-items: center; /* 세로 중앙 정렬 */
   }
   
   .stat-success-info {
     text-align: left;
+    flex-grow: 1; /* 정보가 나머지 공간을 차지하게 만듦 */
   }
-  
+
+
   .stat-success-text {
     font-size: 16px;
     color: black;

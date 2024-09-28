@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './MyHabit.css';
 
+
 function MyHabit() {
   const [selectedTab, setSelectedTab] = useState('habit'); // 탭 상태 (나의 습관 or 통계)
   const [showAllHabits, setShowAllHabits] = useState(false); // 습관 전체보기 토글 상태
@@ -152,7 +153,7 @@ function MyHabit() {
               <p className="stat-success-count">21회</p>
               <p className="stat-period-left">{selectedHabit?.startDate} ~ {selectedHabit?.endDate}</p>
             </div>
-            <div className="stat-bar"></div>
+            <img src="/img/State_img2.png" alt="Cloud" className="stat-cloud-image" />
           </div>
 
           <div className="stat-success-box">
