@@ -1,19 +1,9 @@
-@font-face {
-  font-family: 'Apple SD Gothic Neo';
-  font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo-Regular.woff2') format('woff2'),
-         url('https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo-Regular.ttf') format('truetype');
+body {
+  margin: 0; /* 기본 여백 제거 */
+  height: 100vh; /* 전체 높이 설정 */
+  background: linear-gradient(to bottom, #FEA0B8, #FEE8D4); /* 전체 배경 그라데이션 설정 */
 }
 
-body {
-  box-sizing: border-box;
-  margin: 0; 
-  font-family: 'Apple SD Gothic Neo';
-  
-  
-}
 
 .signup-container {
   font-family: 'Apple SD Gothic Neo';

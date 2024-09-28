@@ -1,21 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './StartPage.css';
+import styles from './StartPage.module.css'; // styles 객체로 import
 
 function StartPage() {
   return (
-    <div className="start-container">
-      <header className="header">
+    <div className={styles.startContainer}>  {/* className={styles.클래스명} */}
+      <header className={styles.header}>
       </header>
-      <img src="/img/start_img.png" alt="Logo" className="logo-image" />
-      <p>당신의 습관을 어쩌구</p>
-      <p>대충 감성있는 말 적기</p>
-      <div className="buttons">
+      
+      {/* 텍스트 부분 */}
+      <div className={styles.contentWrapper}> {/* styles 객체로 클래스 사용 */}
+        <p className={styles.introText}>
+          좋은 습관을 설정하고, 매일 실천해보세요
+          <br />작은 변화가 큰 성장을 만들어줄 거예요
+        </p>
+      </div>
+
+      {/* 이미지 부분 */}
+      <img src="/img/start_2.png" alt="Logo" className={styles.logoImage} />
+
+      {/* 버튼 부분 */}
+      <div className={styles.buttons}>
         <Link to="/my-habit">
-          <button className="habit-btn">나의 습관</button>
+          <button className={styles.habitBtn}>나의 습관</button>
         </Link>
         <Link to="/add-habit">
-          <button className="habit-btn">습관 추가</button>
+          <button className={styles.habitBtn}>습관 추가</button>
         </Link>
       </div>
     </div>

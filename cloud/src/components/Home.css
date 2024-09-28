@@ -12,6 +12,11 @@ body {
   height: 100vh; 
 }
 
+body, h1, h2, h3, p, button, input, textarea {
+  font-family: 'Apple SD Gothic Neo', sans-serif;
+}
+
+
 .home-container {
   width:393px;
   height: 100vh;

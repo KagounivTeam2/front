@@ -1,94 +1,28 @@
-.add-habit-container {
-    background-color: #FAFAFA; /* 전체 배경색 */
-    padding: 20px;
-    margin: auto;
-    max-width: 400px; /* 최대 가로 너비를 설정하여 지나치게 넓어지지 않게 함 */
-    min-height: 96vh;
-  }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-
-  .sub-title {
-    margin-top: 20px;
-    font-size: 18px;
-  }
-  
-  .favorite-habit-box {
-    display: flex;
-    overflow-x: scroll; /* 가로 스크롤 가능하도록 설정 */
-    gap: 10px;
-    padding: 10px 0; /* 상하 패딩 추가 */
-    scrollbar-width: none; /* Firefox에서 스크롤 바 숨기기 */
-    -ms-overflow-style: none;  /* IE 및 Edge에서 스크롤 바 숨기기 */
-  }
-  
-  /* Chrome, Safari, Opera에서 스크롤 바 숨기기 */
-  .favorite-habit-box::-webkit-scrollbar {
-    display: none; /* 스크롤 바 숨기기 */
-  }  
-  
-  .daily-habit-container {
-    display: flex;
-    flex-direction: column; /* 세로 방향으로 배치 */
-    gap: 10px; /* 박스 사이의 간격 */
-    margin-bottom: 20px; /* 하단 여백 */
-    
-  }
-  
-  .habit-box, .daily-habit-box {
-    
-    background-color: white; /* 박스 배경색 */
-    border-radius: 8px;
-    padding: 15px;
-    cursor: pointer;
-    transition: transform 0.2s;
-    min-width: 150px; /* 박스 최소 너비 */
-  }
-  
-  .habit-box:hover, .daily-habit-box:hover {
-    transform: scale(1.05);
-  }
-  
-  .daily-habit-box {
-    height: 87px; /* 높이를 고정 */
-    color: #333; /* 텍스트 색상 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-.input-button {
-  background-color: #FE8DA5; /* 버튼 색상 */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  width: 331px; /* 버튼 너비 */
-  height: 73px; /* 버튼 높이 */
-  display: flex; /* 플렉스 박스 사용 */
-  justify-content: center; /* 수평 중앙 정렬 */
-  align-items: center; /* 수직 중앙 정렬 */
-  margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 중앙 정렬 */
+body {
+  font-family: 'Apple SD Gothic Neo', sans-serif;
 }
 
-  .input-button:hover {
-    background-color: #FF6F85; /* 버튼 호버 색상 */
-  }
+
+.add-habit-container {
+  background-color: #FAFAFA; /* 전체 배경색 */
+  padding: 20px;
+  margin: auto;
+  max-width: 400px; /* 최대 가로 너비 */
+  min-height: 96vh;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 10px ;
+}
+
+.sub-title {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
 .favorite-habit-box {
   display: flex;
   overflow-x: scroll; /* 가로 스크롤 가능하도록 설정 */
@@ -96,58 +30,159 @@
   padding: 10px 0; /* 상하 패딩 추가 */
   scrollbar-width: none; /* Firefox에서 스크롤 바 숨기기 */
   -ms-overflow-style: none;  /* IE 및 Edge에서 스크롤 바 숨기기 */
-}
+  }
+
+  .favorite-habit-box2 {
+    display: flex;
+    overflow-x: scroll; /* 가로 스크롤 가능하도록 설정 */
+    gap: 10px;
+    padding: 10px 0; /* 상하 패딩 추가 */
+    scrollbar-width: none; /* Firefox에서 스크롤 바 숨기기 */
+    -ms-overflow-style: none;  /* IE 및 Edge에서 스크롤 바 숨기기 */
+
+    }
 
 /* Chrome, Safari, Opera에서 스크롤 바 숨기기 */
 .favorite-habit-box::-webkit-scrollbar {
   display: none; /* 스크롤 바 숨기기 */
+}  
+
+.daily-habit-container {
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 배치 */
+  gap: 10px; /* 박스 사이의 간격 */
+  margin-bottom: 20px; /* 하단 여백 */
 }
+
+.habit-box, .daily-habit-box {
+  background-color: white; /* 박스 배경색 */
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  min-width: 110px; /* 박스 최소 너비 조정 */
+  border: 1px solid #FE8DA5; /* 테두리 추가 */
   
+}
+
+.square-box {
+  background-color: white; /* 박스 배경색 */
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  min-width: 80px; /* 박스 최소 너비 조정 */
+  width: 75px; /* 박스 너비 조정 */
+  border: 1px solid #FE8DA5; /* 테두리 추가 */
+}
+
+
+.daily-habit-box {
+  background-color: white; /* 박스 배경색 */
+  border-radius: 15px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  min-width: 110px; /* 박스 최소 너비 조정 */
+  border: none; /* 테두리 추가 */
+}
+
+
+.habit-box:hover, .daily-habit-box:hover {
+  transform: scale(1.05);
+}
+
+.daily-habit-box {
+  height: 70px; /* 높이 줄임 */
+  color: #333; /* 텍스트 색상 */
+  display: flex;
+  align-items: flex-end; /* 텍스트를 하단 정렬 */
+  justify-content: right; /* 왼쪽 정렬 */
+  padding-left: 10px; /* 왼쪽에 여백 추가 */
+  font-weight: bold; /* 텍스트를 볼드 처리 */
+}
+
+
+.input-button {
+background-color: #FE8DA5; /* 버튼 색상 */
+color: white;
+border: none;
+border-radius: 10px; /* 라운딩 추가 */
+padding: 15px; /* 패딩 증가 */
+cursor: pointer;
+transition: background-color 0.3s;
+width: 331px; /* 버튼 너비 */
+height: 73px; /* 버튼 높이 */
+display: flex; /* 플렉스 박스 사용 */
+justify-content: center; /* 수평 중앙 정렬 */
+align-items: center; /* 수직 중앙 정렬 */
+margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 중앙 정렬 */
+font-size: 20px; /* 텍스트 크기 증가 */
+}
+
+.input-button:hover {
+background-color: #FF6F85; /* 버튼 호버 색상 */
+}
+
+/* 정사각형 박스 */
+.square-box {
+  width: 50px; /* 너비 줄임 */
+  height: 60px; /* 높이 줄임 */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #FE8DA5; /* 테두리 추가 */
+}
+
 
 .direct-input-button {
-    width: 331px;   /* 버튼 너비 */
-    height: 73px;   /* 버튼 높이 */
-    background-color: #FE8DA5; /* 버튼 배경색 */
-    color: white;   /* 글자색 */
-    border: none;   /* 테두리 제거 */
-    border-radius: 10px; /* 라운딩 처리 */
-    font-size: 16px; /* 글자 크기 */
-    cursor: pointer; /* 마우스 커서 변경 */
-    margin-top: 20px; /* 위쪽 여백 */
-    display: flex;   /* 플렉스 박스 설정 */
-    align-items: center; /* 수직 정렬 */
-    justify-content: center; /* 수평 정렬 */
-  }
-  
-  .direct-input-button:hover {
-    background-color: #FF6F85; /* 호버 시 색상 변화 */
-  }
-  
-  .header {
-    display: flex; /* 가로로 나란히 배치 */
-    align-items: center; /* 수직 중앙 정렬 */
-    padding: 10px; /* 상하 패딩 추가 */
-    justify-content: center; /* 중앙 정렬 */
-    position: relative; /* 자식 요소의 절대 위치 설정을 위한 상대 위치 설정 */
-  }
-  
-  .back-button {
-    position: absolute; /* 절대 위치로 이동 */
-    left: 100px; /* 왼쪽으로 간격 설정 */
-    background: none; /* 버튼 배경 제거 */
-    border: none; /* 버튼 테두리 제거 */
-    font-size: 20px; /* 버튼 글씨 크기 조정 */
-    cursor: pointer; /* 마우스 커서 모양 변경 */
-  }
-  
-  .add-habit-title {
-    font-size: 24px; /* 제목 크기 조정 */
-    text-align: center; /* 제목 중앙 정렬 */
+  width: 331px;   /* 버튼 너비 */
+  height: 73px;   /* 버튼 높이 */
+  background-color: #FE8DA5; /* 버튼 배경색 */
+  color: white;   /* 글자색 */
+  border: none;   /* 테두리 제거 */
+  border-radius: 10px; /* 라운딩 처리 */
+  font-size: 16px; /* 글자 크기 */
+  cursor: pointer; /* 마우스 커서 변경 */
+  margin-top: 20px; /* 위쪽 여백 */
+  display: flex;   /* 플렉스 박스 설정 */
+  align-items: center; /* 수직 정렬 */
+  justify-content: center; /* 수평 정렬 */
 }
-  
 
-  .title {
-    font-size: 20px; /* 타이틀 크기 조정 */
-    margin: 0; /* 기본 여백 제거 */
-  }
-  
+.direct-input-button:hover {
+  background-color: #FF6F85; /* 호버 시 색상 변화 */
+}
+
+.header {
+  display: flex; /* 가로로 나란히 배치 */
+  align-items: center; /* 수직 중앙 정렬 */
+  padding: 10px; /* 상하 패딩 추가 */
+  justify-content: center; /* 중앙 정렬 */
+  position: relative; /* 자식 요소의 절대 위치 설정을 위한 상대 위치 설정 */
+}
+
+.back-button {
+  position: absolute; /* 절대 위치로 이동 */
+  left: 100px; /* 왼쪽으로 간격 설정 */
+  background: none; /* 버튼 배경 제거 */
+  border: none; /* 버튼 테두리 제거 */
+  font-size: 20px; /* 버튼 글씨 크기 조정 */
+  cursor: pointer; /* 마우스 커서 모양 변경 */
+}
+
+.add-habit-title {
+  font-size: 24px; /* 제목 크기 조정 */
+  text-align: center; /* 제목 중앙 정렬 */
+}
+
+.title {
+  font-size: 20px; /* 타이틀 크기 조정 */
+  margin: 0; /* 기본 여백 제거 */
+}
+
+.sub-title {
+  margin-top: 10px; /* 간격을 더 줄이기 위해 값 조정 */
+  font-size: 18px;
+}

@@ -7,6 +7,11 @@
          url('https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo-Regular.ttf') format('truetype');
 }
 
+body, h1, h2, h3, p, button, input, textarea {
+  font-family: 'Apple SD Gothic Neo', sans-serif;
+}
+
+
 .login-container {
   font-family: 'Apple SD Gothic Neo';
   width:393px;
