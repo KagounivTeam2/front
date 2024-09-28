@@ -6,18 +6,32 @@ body {
 .add-habit-container {
   background-color: #FAFAFA; /* 전체 배경색 */
   margin: auto;
-  width: 100vw;
+  width: 100vw;;
+  max-width: 500px;
+  height: 100vh; /* 전체 높이 */  
   /* min-height: 96vh; */
 }
 .add-habit-wrapper {
   padding: 0 16px;
 }
-.header {
+.back-button-image,
+.back-button {
+  width: 21px;
+  height: 21px;
+  cursor: pointer;
+
+}
+.add-habit-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 56px;
 }
-
+.mypage-icon {
+  width: 21px;
+  height: 21px;
+  cursor: pointer;
+}
 .sub-title {
   margin-top: 20px;
   font-size: 18px;
@@ -27,7 +41,7 @@ body {
   display: flex;
   overflow-x: scroll; /* 가로 스크롤 가능하도록 설정 */
   gap: 10px;
-  padding: 10px 0; /* 상하 패딩 추가 */
+  margin-bottom: 36px; /* 하단 여백 */
   scrollbar-width: none; /* Firefox에서 스크롤 바 숨기기 */
   -ms-overflow-style: none;  /* IE 및 Edge에서 스크롤 바 숨기기 */
   }
@@ -139,6 +153,7 @@ justify-content: center; /* 수평 중앙 정렬 */
 align-items: center; /* 수직 중앙 정렬 */
 margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 중앙 정렬 */
 font-size: 20px; /* 텍스트 크기 증가 */
+
 }
 
 .input-button:hover {

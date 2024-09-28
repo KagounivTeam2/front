@@ -15,94 +15,58 @@
     }
   .title-container{
     display: flex;
-
+    text-align: center;
   }
   .mypage-container{
-    position:relative;
     font-family: 'Apple SD Gothic Neo';
-    width:393px;
+    flex: 1;
+    width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     background-color: #FAFAFA;
-    /* border:1px solid black; */
-    padding:0;
     cursor: 'pointer';
     img{
-        position:absolute;
-        top:63px;
-        left:16px;
-        
-    }
-    
-    div:nth-child(2){
-        position: absolute;
-        top: 65px; 
-        font-size: 17px;
-        font-weight: 500;
-    }
-    div:nth-child(3){
-        position:absolute;
-        width:331px;
-        height:47px;
-        border-radius: 8px;
-        margin-bottom:10px;
-        top:138px;
-        background-color: #FAFAFA;
-        font-size:15px;
-        font-weight: 600;
-        
-    }
-    div:nth-child(4){
-        position:absolute;
-        width:331px;
-        height:47px;
-        border-radius: 8px;
-        margin-bottom:10px;
-        font-size:13px;
-        font-weight: 500;
-        top:165px;
-        line-height: 47px;
-        padding-left:10px;
-        background-color: #FFDADD;
-        cursor: 'pointer';
-    }
-    div:nth-child(5){
-        position:absolute;
-        width:331px;
-        height:47px;
-        border-radius: 8px;
-        margin-bottom:10px;
-        font-size:13px;
-        font-weight: 500;
-        top:220px;
-        line-height: 47px;
-        padding-left:10px;
-        background-color: #FFDADD;
-        cursor: 'pointer';
-    }
-    div:nth-child(5){
-        position:absolute;
-        width:331px;
-        height:47px;
-        border-radius: 8px;
-        margin-bottom:10px;
-        font-size:13px;
-        font-weight: 500;
-        top:220px;
-        line-height: 47px;
-        padding-left:10px;
-        background-color: #FFDADD;
-        cursor: 'pointer';
+      cursor: pointer;
+      width: 12px;
+      height: 21px;
+      padding-right: 9px;
     }
   }
-
-  .mypage-container.overlay {
-    background-color: lightgray;
-    background-color: rgba(15,15,15,0.5);
-    /* position:absolute;
-    z-index: 999; */
-
-}
+  .mypage-wrapper {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+  }
+  .mypage-header {
+    flex: 1;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px 16px;
+    margin-bottom: 47px;
+  }
+  .dummy {
+    width: 21px;
+    height: 21px;
+  }
+  .mypage-content-container {
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+  }
+  .mypage-button-container {
+    flex: 1;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .mypage-button {
+    flex: 1;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 8px;
+    height: 47px;
+    align-items: center;
+    background-color: #FFDADD;
+  }

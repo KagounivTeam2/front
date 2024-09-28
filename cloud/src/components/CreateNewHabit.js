@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './CreateNewHabit.css';
@@ -16,7 +16,8 @@ function CreateNewHabit() {
   const [isFavorite, setIsFavorite] = useState(false); // 즐겨찾기 상태 추가
   const maxChars = 20; // 최대 글자수 제한
   const navigate = useNavigate();
-
+  const { habitId } = useParams();
+  
 
   // 글자 초기화 함수
   const clearHabitName = () => {
@@ -78,6 +79,7 @@ function CreateNewHabit() {
 
   return (
     <div className="create-habit-container">
+      <div className="create-habit-wrapper">
       {/* 상단 헤더 */}
       <header className="header">
         <Link to="/add-habit" className="back-button">&lt;</Link>
@@ -86,7 +88,7 @@ function CreateNewHabit() {
 
       {/* 습관명 타이틀 */}
       <div className="input-section">
-        <label className="input-title">습관명</label> {/* 습관명 타이틀 추가 */}
+        <label className="input-title" >습관명</label> {/* 습관명 타이틀 추가 */}
         <div className="input-wrapper">
           {/* 글자수 현황 */}
           <span className="char-count">{habitName.length}/{maxChars}</span>
@@ -95,7 +97,7 @@ function CreateNewHabit() {
             type="text"
             value={habitName}
             onChange={(e) => setHabitName(e.target.value.slice(0, maxChars))} // 글자수 제한
-            placeholder="나만의 습관에 이름을 붙여주세요"
+            placeholder= { habitId ? decodeURIComponent(habitId) : "나만의 습관에 이름을 붙여주세요"} 
             className="habit-input"
             maxLength={maxChars}
           />
@@ -215,6 +217,7 @@ function CreateNewHabit() {
 
       {/* 습관 생성하기 버튼 */}
       <button onClick={createHabit} className="create-habit-button">습관 생성하기</button>
+    </div>
     </div>
   );
 }

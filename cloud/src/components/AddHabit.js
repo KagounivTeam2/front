@@ -79,7 +79,7 @@ const AddHabit = () => {
 
   const handleHabitClick = (habit) => {
     setHabitName(habit);
-    createHabit(habit, theme, favoriteState); // 선택한 습관을 등록
+    navigate(`/create-habit/${habit}`);
   };
 
   // 컴포넌트가 마운트될 때 추천 습관 가져오기
@@ -90,11 +90,10 @@ const AddHabit = () => {
   return (
     <div className="add-habit-container">
       <div className="add-habit-wrapper">
-
-
-      <header className="header">
-        <Link to="/my-habit" className="back-button">&lt;</Link>
+      <header className="add-habit-header">
+      <img src="img/icon/back.png" alt="뒤로 가기 버튼" className="back-button-image" onClick={() => navigate("/my-habit")}/>
         <h1 className="headline">습관 추가</h1>
+        <img src="img/icon/mypage_logo_x3.png" alt="마이페이지 아이콘" className="mypage-icon" onClick={() => navigate("/mypage")}/>
       </header>
 
       <h2 className="sub-title">즐겨찾는 습관</h2>
