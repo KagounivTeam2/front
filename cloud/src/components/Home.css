@@ -18,7 +18,7 @@ body, h1, h2, h3, p, button, input, textarea {
 
 
 .home-container {
-  width:393px;
+  flex: 1;
   height: 100vh;
   display: flex;
   flex-direction: column;

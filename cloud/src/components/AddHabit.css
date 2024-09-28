@@ -5,17 +5,17 @@ body {
 
 .add-habit-container {
   background-color: #FAFAFA; /* 전체 배경색 */
-  padding: 20px;
   margin: auto;
-  max-width: 400px; /* 최대 가로 너비 */
-  min-height: 96vh;
+  width: 100vw;
+  /* min-height: 96vh; */
+}
+.add-habit-wrapper {
+  padding: 0 16px;
 }
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  margin-top: 10px ;
 }
 
 .sub-title {

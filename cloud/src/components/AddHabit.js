@@ -89,6 +89,9 @@ const AddHabit = () => {
 
   return (
     <div className="add-habit-container">
+      <div className="add-habit-wrapper">
+
+
       <header className="header">
         <Link to="/my-habit" className="back-button">&lt;</Link>
         <h1 className="headline">습관 추가</h1>
@@ -159,6 +162,7 @@ const AddHabit = () => {
 
       {/* 에러 메시지 출력 */}
       {error && <p className="error-msg">{error}</p>}
+    </div>
     </div>
   );
 };
