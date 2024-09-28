@@ -23,6 +23,8 @@ body, h1, h2, h3, p, button, input, textarea {
   min-width: 56.6vh;
   padding-top: 13vh;
   max-height: 87vh;
+  background: linear-gradient(to bottom, #79CCFF, #D5FCFF);
+
 }
 
 .logo-image {

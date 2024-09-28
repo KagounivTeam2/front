@@ -36,27 +36,7 @@ function Login() {
       console.error("로그인 실패:", error);
     }
   };
-  // 시간에 따른 배경색 설정 함수
-  const setTimeBasedBackground = () => {
-    const currentHour = new Date().getHours(); 
 
-    if (currentHour >= 6 && currentHour < 15) {
-      // 06:00 ~ 15:00
-      setBackground('linear-gradient(to bottom, #FEA0B8, #FEE8D4)'); // Day 테마
-    } else if (currentHour >= 15 && currentHour < 20) {
-      // 15:00 ~ 20:00
-      setBackground('linear-gradient(to bottom, #79CCFF, #D5FCFF)'); // Evening 테마
-    } else {
-      // 20:00 ~ 06:00
-      setBackground('linear-gradient(to bottom, #635FB8, #E2DAC7)'); // Night 테마
-    }
-  };
-
-  useEffect(() => {
-    setTimeBasedBackground();
-    const timer = setInterval(setTimeBasedBackground, 1000 * 60);
-    return () => clearInterval(timer);
-  }, []);
 
   return (
     <div className="login-container" style={{ background }}>  

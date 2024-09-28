@@ -1,0 +1,93 @@
+.signupContainer {
+  font-family: 'Apple SD Gothic Neo', sans-serif;
+  width: 393px;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 56.6vh;
+  max-height: 87vh;
+  padding-top: 13vh;
+  background: linear-gradient(to bottom, #79CCFF, #D5FCFF); /* 그라데이션 배경 추가 */
+}
+
+.logoImage {
+  width: 200px;
+  margin-top: -40px;
+  margin-bottom: 80px;
+}
+
+.idContainer, .passwordContainer {
+  width: 70%;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.inputField1, .inputField2 {
+  width: 100%;
+  height: 30px;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid rgba(255, 255, 255);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.inputField1::placeholder, 
+.inputField2::placeholder {
+  color: rgba(15, 15, 15, 0.7);
+  text-align: left;
+  padding-left: 9px;
+}
+
+.charCountSignup {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: rgba(15, 15, 15, 0.7);
+}
+
+.idInfo, .passwordInfo {
+  font-size: 15px;
+  color: rgba(15, 15, 15, 0.7);
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.signupButton {
+  width: 170px;
+  height: 55px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  margin-top: 75px;
+}
+
+#errorMsgContainer {
+  position: relative;
+  width: 70%;
+  margin-bottom: 10px;
+}
+
+#errorMsg {
+  position: absolute;
+  top: -30px;
+  left: 10px;
+  color: rgb(255, 60, 63);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+#errorMsg img {
+  width: 12px;
+  margin-right: 5px;
+}

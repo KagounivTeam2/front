@@ -1,21 +1,20 @@
 @font-face {
   font-family: 'Apple SD Gothic Neo';
   font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo-Regular.woff2') format('woff2'),
-         url('https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo-Regular.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo-Regular.ttf') format('truetype');
 }
 
 body {
-  margin: 0; 
-  height: 100vh; 
+  margin: 0;
+  height: 100vh;
 }
 
 body, h1, h2, h3, p, button, input, textarea {
   font-family: 'Apple SD Gothic Neo', sans-serif;
 }
-
 
 .home-container {
   flex: 1;
@@ -24,34 +23,33 @@ body, h1, h2, h3, p, button, input, textarea {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position:relative;
+  position: relative;
   min-width: 56.6vh;
   padding-top: 13vh;
   max-height: 87vh;
+  background: linear-gradient(to bottom, #79CCFF, #D5FCFF); /* 그라데이션 배경 추가 */
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  position:absolute;
+  position: absolute;
   top: 500px; /* 버튼들을 더 아래로 내림 */
 }
 
 .login-btn, .signup-btn {
   font-family: 'Apple SD Gothic Neo';
   background-color: rgba(255, 255, 255, 0.7); /* 약간 투명한 흰색 */
-  /* padding: 10px 20px; */
   border-radius: 16px;
   font-size: 17px;
   cursor: pointer;
   border: none;
   width: 175px;
-  height:55px;
-  text-align: center; 
+  height: 55px;
+  text-align: center;
   font-weight: bold;
 }
-
 
 .logo-image-main {
   width: 290px;
