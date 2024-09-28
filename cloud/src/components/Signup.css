@@ -1,46 +1,140 @@
-body {
-  margin: 0; /* 기본 여백 제거 */
-  height: 100vh; /* 전체 높이 설정 */
-  background: linear-gradient(to bottom, #FEA0B8, #FEE8D4); /* 전체 배경 그라데이션 설정 */
+@font-face {
+  font-family: 'Apple SD Gothic Neo';
+  font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo-Regular.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo-Regular.ttf') format('truetype');
 }
 
+body {
+  box-sizing: border-box;
+  margin: 0; 
+  font-family: 'Apple SD Gothic Neo';
+  
+  
+}
 
 .signup-container {
+  font-family: 'Apple SD Gothic Neo';
+  width:393px;
   height: 100vh;
+  position:relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 }
 
 .logo-image {
-  width: 150px; /* 이미지 너비 조정 */
-  margin-bottom: 20px; /* 이미지 아래 여백 추가 */
+  width: 150px; 
+  margin-bottom: 20px; 
 }
 
-.input-field {
+.id-container{
+  
+  div{
+    position:absolute;
+    top:414px;
+    right:35px;
+    color: rgba(15, 15, 15, 0.5);
+  }
+
+}
+
+.password-container{
+  
+  div{
+    position:absolute;
+    top:492px;
+    right:35px;
+    color: rgba(15, 15, 15, 0.5);
+  } 
+
+}
+
+.input-field1 {
+  position:absolute;
+  left:20.2px;
+  top:389px;
+  font-family: 'Apple SD Gothic Neo';
+  display: flex;
+  border-radius: 8px;
+  width: 331px; 
+  height: 27px;
+  font-size:13px;
+  border: 1px solid rgba(255, 255, 255); 
+  background-color:rgba(255, 255, 255, 0); 
+
+}
+.input-field1::placeholder { 
+  color: rgba(15, 15, 15, 0.7); 
+}
+
+.input-field2::placeholder {
+  color: rgba(15, 15, 15, 0.7); 
+}
+.input-field2 {
+  position:absolute;
+  top:467px;
+  left:0px;
+  left:20.2px;
+  font-family: 'Apple SD Gothic Neo';
+  font-size:13px;
   margin: 10px 0;
-  padding: 10px;
-  border-radius: 10px;
-  width: 300px; /* 너비 조정 */
-  height: 30px;
-  border: 2px solid rgba(255, 255, 255, 0.5); /* 투명한 흰색 테두리 */
-  background-color: rgba(255, 255, 255, 0); /* 반투명 배경 */
+  border-radius: 8px;
+  width: 331px; 
+  height: 27px;
+  border: 1px solid rgba(255, 255, 255);
+  background-color:rgba(255, 255, 255, 0); 
+  
+}
+.input-field1:focus,
+.input-field2:focus {
+  outline: none;
+  
 }
 
+#id{
+  font-family: 'Apple SD Gothic Neo';
+  position:absolute;
+  top:450px;
+  left:30px;
+  font-size:11px;
+}
+
+#pd{
+  font-family: 'Apple SD Gothic Neo';
+  position:absolute;
+  top:527px;
+  left:30px;
+  font-size:11px;
+}
 .signup-button {
+  font-family: 'Apple SD Gothic Neo';
+  background-color:rgba(255, 255, 255, 0);
   background-color: rgb(255, 255, 255, 0.8);
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 16px;
   font-size: 16px;
   cursor: pointer;
-  width: 175px; /* 버튼 너비 조정 */
+  width: 175px; 
   height: 55px;
-  border: none; /* 테두리 제거 */
-  margin-top: 88px; /* 버튼 위쪽 여백 추가 */
+  border: none; 
+  position:absolute;
+  top:621px;
+
 }
 
 .error-msg {
-  color: red;
-  margin-top: 10px;
+  font-family: 'Apple SD Gothic Neo';
+  color: rgb(255,60,63);
+  position:absolute;
+  top:370px;
+  left:25px;
+  font-size: 11px;
+  span{
+    padding-left:3px;
+  }
 }
