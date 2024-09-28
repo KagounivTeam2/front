@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  display: flex;
 }
 
 .startContainer {
@@ -31,7 +32,7 @@ body {
 }
 
 .logoImage {
-  display: block;
+  display: flex;
   margin: 0 auto;
   width: 300px;
   height: auto;
@@ -42,7 +43,7 @@ body {
   justify-content: center; /* 로고를 중앙 정렬 */
   align-items: center;
   position: absolute;
-  top: 40px; /* 상단에서 20px 띄움 */
+  top: 60px; /* 상단에서 20px 띄움 */
   left: 50%;
   transform: translateX(-50%);
 }

@@ -340,24 +340,23 @@ body, h1, h2, h3, p, button, input, textarea {
     color: black;
 }
 
-.stat-success-count {
-    font-size: 24px;
-    color: #FE8DA5;
-}
 
-.stat-success-percent {
-    font-size: 24px;
-    color: #FE8DA5;
-}
-
+/* 통계 바 색상 변경 */
 .stat-bar {
-    background-color: #FE8DA5;
+    background-color: #BAF8DD; /* 통계 바 색상을 #BAF8DD로 변경 */
     height: 10px;
     width: 100%;
     border-radius: 5px;
     margin-top: 10px;
 }
 
+/* n개, n회, n%의 색상 변경 */
+.stat-cloud-count,
+.stat-success-count,
+.stat-success-percent {
+    font-size: 24px;
+    color: black; /* 텍스트 색상을 검은색으로 변경 */
+}
 
 
 
