@@ -1,11 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import './Login.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./Login.css";
+import { baseAxios } from "../api/baseAxios";
+import { useNavigate } from "react-router-dom"; // useNavigate import
 
 function Login() {
-
   const [background, setBackground] = useState('');
+  const [loginId, setLoginId] = useState(''); 
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate =useNavigate();
 
+  const handleLogin = async () => {
+    if (!loginId || !password) {
+      setError("이름과 비밀번호를 입력해주세요");
+      return;
+    }
+
+    try {
+      const response = await baseAxios.post("/api/auth/login", {
+        loginId: loginId,
+        password: password,
+      });
+
+      const token = response.headers.get("authorization"); // 응답에서 토큰을 추출
+      localStorage.setItem("token", token); // 로컬 스토리지에 저장
+      setError(""); // 오류 메시지 초기화
+
+      // 로그인 성공 후 메인 페이지로 리다이렉트
+      navigate("/"); // 메인 페이지로 리다이렉트
+    } catch (error) {
+      // 로그인 실패 시 오류 메시지 설정
+      setError("입력하신 정보를 찾을 수 없어요");
+      console.error("로그인 실패:", error);
+    }
+  };
   // 시간에 따른 배경색 설정 함수
   const setTimeBasedBackground = () => {
     const currentHour = new Date().getHours(); 
@@ -28,48 +57,6 @@ function Login() {
     return () => clearInterval(timer);
   }, []);
 
-  const [loginId, setLoginId] = useState(''); 
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigation=useNavigate();
-  const handleLogin = async () => {
-    if (!loginId || !password) { 
-      setError('아이디와 비밀번호를 입력해주세요'); 
-      return;
-    }
-
-    try {
-      //로그인 요청
-      const response = await fetch('http://44.219.236.123:8080/api/auth/login', { 
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          
-        },
-        body: JSON.stringify({ loginId, password }), 
-      });
-      console.log('로그인 요청 응답:', response);
-      if (response.ok) { 
-        const data = await response.json();
-        
-        localStorage.setItem('token', data.token); 
-        console.log('로그인 성공', data);
-        navigation('/');
-      } else if (response.status === 401) { 
-        setError('아이디 또는 비밀번호가 올바르지 않습니다.');
-      } else if (response.status === 400) {
-        setError('필수 입력 값이 누락되었습니다.');
-      } else {
-        
-        const data = await response.json();
-        setError(data.message || '로그인 중 오류가 발생했습니다.');
-      }
-    } catch (error) {
-      console.error('로그인 중 오류 발생:', error);
-      setError('로그인 중 오류가 발생했습니다. 다시 시도해주세요.');
-    }
-  };
-
   return (
     <div className="login-container" style={{ background }}>  
     {/* <img src="/img/Logo_img.png" alt="Logo" className="logo-image" /> */}
@@ -90,10 +77,10 @@ function Login() {
       />
             
       {error && 
-      <p className="error-msg">
-        <img src={process.env.PUBLIC_URL + "img/icon/warning-triangle.png"} />
-          <span>{error}</span>
-      </p>}
+        <p className="error-msg">
+          <img src={process.env.PUBLIC_URL + "img/icon/warning-triangle.png"} />
+            <span>{error}</span>
+        </p>}
       <button onClick={handleLogin} className="login-button">시작하기</button>
     </div>
   );
