@@ -12,7 +12,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 57.1vh;  /*가로길이 폰사이즈 맞추기*/
+  min-width: 56.6vh;  /*가로길이 폰사이즈 맞추기*/
   max-height: 87vh; /*높이도 딱 맞춤*/
   padding-top: 13vh; /* 전체적인 위치를 아래로 내림 */
 
