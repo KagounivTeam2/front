@@ -21,6 +21,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/add-habit" element={<AddHabit />} />
         <Route path="/create-habit" element={<CreateNewHabit />} />
+        <Route path="/create-habit/:habitId" element={<CreateNewHabit />} />
         <Route path="/my-habit" element={<MyHabit />} />
         <Route path="/mypage" element={<MyPage />} />
 

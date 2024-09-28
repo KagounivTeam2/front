@@ -69,48 +69,92 @@ const AddHabit = () => {
     }
   };
 
+  const handleDirectInputClick = () => {
+    setHabitName(""); // 습관 이름 초기화
+    navigate("/create-habit"); // 직접 입력 페이지로 이동
+  };
+
+  const handleHabitClick = (habit) => {
+    setHabitName(habit);
+    navigate(`/create-habit/${habit}`);
+  };
+
+  // 컴포넌트가 마운트될 때 추천 습관 가져오기
+  useEffect(() => {
+    fetchRecommendations();
+  }, []);
+
   return (
     <div className="add-habit-container">
       <div className="add-habit-wrapper">
-        <header className="header">
-          <Link to="/my-habit" className="back-button">&lt;</Link>
-          <h1 className="headline">습관 추가</h1>
-        </header>
+      <header className="add-habit-header">
+      <img src="img/icon/back.png" alt="뒤로 가기 버튼" className="back-button-image" onClick={() => navigate("/my-habit")}/>
+        <h1 className="headline">습관 추가</h1>
+        <img src="img/icon/mypage_logo_x3.png" alt="마이페이지 아이콘" className="mypage-icon" onClick={() => navigate("/mypage")}/>
+      </header>
 
-        <h2 className="sub-title">습관 이름 입력</h2>
-        <input
-          type="text"
-          value={habitName}
-          onChange={(e) => setHabitName(e.target.value)}
-          placeholder="습관 이름을 입력하세요"
-        />
+      <h2 className="sub-title">즐겨찾는 습관</h2>
+      <div className="favorite-habit-box">
+        {recommendations.length !== 0 && recommendations.slice(0, 3).map(
+          (
+            habit,
+            index // 첫 3개 추천 습관 표시
+          ) => (
+            <div
+              key={index}
+              className="habit-box"
+              onClick={() => handleHabitClick(habit.recommentName)}
+            >
+              {habit.recommentName}
+            </div>
+          )
+        )}
+      </div>
 
-        <h2 className="sub-title">시작 날짜</h2>
-        <input
-          type="date"
-          value={startDate}
-          onChange={handleStartDateChange}
-          min={new Date().toISOString().split("T")[0]} // 오늘부터 선택 가능
-        />
+      <h2 className="sub-title">매일매일 꾸준히</h2>
+      <div className="daily-habit-container">
+        {[
+          { text: "매일 오전 9시 전 기상하기", image: "/img/recommend_img1.png", gradient: "linear-gradient(to bottom, rgba(121, 204, 255, 0.7), rgba(213, 252, 255, 0.7))" },
+          { text: "매일 30분 운동하기", image: "/img/recommend_img2.png", gradient: "linear-gradient(to bottom, rgba(254, 160, 184, 0.7), rgba(254, 232, 212, 0.7))" },
+          { text: "매일 물 1L 마시기", image: "/img/recommend_img3.png", gradient: "linear-gradient(to bottom, rgba(99, 95, 184, 0.7), rgba(226, 218, 199, 0.7))" }
+        ].map((habit, index) => (
+          <div
+            key={index}
+            className="daily-habit-box"
+            style={{
+              backgroundImage: `${habit.gradient}, url(${habit.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'  // 이미지 반복 없앰
+            }}
+            onClick={() => handleHabitClick(habit.text)}
+          >
+            <p className="habit-text">{habit.text}</p>
+          </div>
+        ))}
+      </div>
 
-        <h2 className="sub-title">종료 날짜 (시작 날짜로부터 7일 이내)</h2>
-        <input
-          type="date"
-          id="end-date"
-          ref={endDateInputRef} // 종료 날짜 필드를 참조
-          value={endDate}
-          onChange={handleEndDateChange}
-          max={new Date().toISOString().split("T")[6]} // 오늘부터 선택 가능
-          disabled={!startDate} // 시작 날짜가 선택되지 않으면 비활성화
-        />
+      <h2 className="sub-title">이런것도 있어요~</h2>
+      <div className="favorite-habit-box">
+        {recommendations.slice(3, 6).map(
+          (
+            habit,
+            index // 다음 3개 추천 습관 표시
+          ) => (
+            <div
+              key={index}
+              className="habit-box square-box"
+              onClick={() => handleHabitClick(habit.recommentName)}
+            >
+              {habit.recommentName}
+            </div>
+          )
+        )}
+      </div>
 
-        <button
-          className="input-button"
-          onClick={() => createHabit(habitName, theme, favoriteState)}
-          disabled={!habitName || !startDate || !endDate}
-        >
-          습관 추가하기
-        </button>
+      <button className="input-button" onClick={handleDirectInputClick}>
+        직접 입력
+      </button>
 
         {error && <p className="error-msg">{error}</p>}
       </div>

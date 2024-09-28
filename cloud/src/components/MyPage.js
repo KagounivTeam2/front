@@ -7,7 +7,7 @@ import DeleteAccount from './myPageComponent/DeleteAccount';
 const MyPage = () => {
     const [showLogout, setShowLogout] = useState(false); 
     const [showDeleteAccount, setShowDeleteAccount] = useState(false); 
-
+    const navigate = useNavigate();
     const handleLogoutClick = () => {
       setShowLogout(!showLogout); 
       setShowDeleteAccount(false);
@@ -17,7 +17,6 @@ const MyPage = () => {
         setShowDeleteAccount(!showDeleteAccount); 
         setShowLogout(false); 
       };
-  
    
       const handleCancel = () => {
         setShowLogout(false); // 취소를 누르면 로그아웃 창을 닫음
@@ -28,19 +27,26 @@ const MyPage = () => {
       };
 
   return (
-    <>
     <div className='mypage-container'>
-        <Link to='/my-habit'>
-            <img src={process.env.PUBLIC_URL + "img/icon/previous.png"} style={{cursor: 'pointer'}}/>
-        </Link>
-            <div>마이페이지</div>
-            <div>계정 관리</div>
-            <div  onClick={handleLogoutClick} style={{cursor: 'pointer'}}>로그아웃</div>
-            <div onClick={handleDeleteAccountClick} style={{cursor: 'pointer'}}>회원탈퇴</div>
+      <div className='mypage-wrapper'>
+        <div className='mypage-header'>
+          <div>
+           <img src="img/icon/previous.png" onClick={() => navigate(-1)}/>
+          </div>
+          <div style={{ fontSize: '17px' }}>마이페이지</div>
+          <div className='dummy'/>
+        </div>
+        <div className="mypage-content-container">
+          <div>계정 관리</div>
+          <div className='mypage-button-container'>
+            <div className='mypage-button' onClick={handleLogoutClick} style={{cursor: 'pointer'}}>로그아웃</div>
+            <div className='mypage-button' onClick={handleDeleteAccountClick} style={{cursor: 'pointer'}}>회원탈퇴</div>
             {showLogout && <Logout onCancel={handleCancel} />}
             {showDeleteAccount && <DeleteAccount onCancel={handleDeleteCancel} />}
+          </div>
+        </div>
+      </div>
     </div>
-    </>
   );
 };
 

@@ -1,103 +1,99 @@
+
 import React, { useEffect, useState } from 'react';
-import styles from './Signup.module.css'; // CSS 모듈 사용
+import { baseAxios } from "../api/baseAxios";
+import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import CloudBackground from './CloudBackground'; // 구름 컴포넌트 불러오기
-import { baseAxios } from "../api/baseAxios";
 
-function Signup() {
-    const [loginId, setLoginId] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
-    const navigate = useNavigate();
+function Login() {
+  const [loginId, setLoginId] = useState(''); 
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigation = useNavigate();
 
-    const handleSignup = async () => {
-        if (!loginId || !password) {
-            setError('아이디와 비밀번호를 입력해주세요');
-            setSuccess('');
-            return;
-        }
+  const handleLogin = async () => {
+    if (!loginId || !password) { 
+      setError('아이디와 비밀번호를 입력해주세요'); 
+      return;
+    }
 
-        try {
-            // 회원가입 API 요청 보내기 (axios 사용)
-            const response = await baseAxios.post('/api/auth', {
-                loginId,
-                password
-            });
+    try {
+      const response = await fetch('http://44.219.236.123:8080/api/auth/login', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ loginId, password }), 
+      });
 
-            const data = response.data; // axios는 기본적으로 JSON 데이터를 파싱하여 제공합니다.
+      if (response.ok) { 
+        const data = await response.json();
+        localStorage.setItem('token', data.token); 
+        navigation('/');
+      } else if (response.status === 401) { 
+        setError('아이디 또는 비밀번호가 올바르지 않습니다.');
+      } else if (response.status === 400) {
+        setError('필수 입력 값이 누락되었습니다.');
+      } else {
+        const data = await response.json();
+        setError(data.message || '로그인 중 오류가 발생했습니다.');
+      }
+    } catch (error) {
+      setError('로그인 중 오류가 발생했습니다. 다시 시도해주세요.');
+    }
+  };
 
-            if (response.status === 409) {
-                setError('이미 존재하는 아이디입니다.');
-                setSuccess('');
-                return;
-            }
+  return (
+    <div className="login-container">  
+      {/* 구름 배경 추가 */}
+      <CloudBackground />
 
-            if (data.success) {
-                navigate('/login');
-                setSuccess(data.responseDto || '회원가입이 완료되었습니다!');
-                setError('');
-            } else {
-                setError('아이디 또는 비밀번호를 다시 설정해주세요.');
-                setSuccess('');
-            }
-        } catch (error) {
-            console.error('회원가입 요청 실패:', error);
-            if (error.response) {
-                setError(error.response.data.message || '회원가입 중 오류가 발생했습니다.');
-            } else if (error.request) {
-                setError('네트워크 오류가 발생했습니다.');
-            } else {
-                setError('회원가입 중 오류가 발생했습니다.');
-            }
-            setSuccess('');
-        }
-    };
+      {/* 로고 추가 */}
+      <img src={process.env.PUBLIC_URL + "/img/Logo_img.png"} alt="Logo" className="logo-image" />
 
-    return (
-        <div className={styles.signupContainer}>
-            <img src={process.env.PUBLIC_URL + "/img/Logo_img.png"} alt="Logo" className={styles.logoImage} />
-            <CloudBackground /> {/* 구름 배경 추가 */}
+      {/* 경고 문구를 아이디 입력 박스 위에 표시 */}
+      <div id="error-msg-container">
+        {error && (
+          <p id="error-msg">
+            <img src={process.env.PUBLIC_URL + "/img/icon/warning-triangle.png"} alt="Warning" />
+            <span>{error}</span>
+          </p>
+        )}
+      </div>
 
-            {/* 경고 문구를 아이디 입력 박스 위에 표시 */}
-            {error && (
-                <div id={styles.errorMsgContainer}>
-                    <p id={styles.errorMsg}>
-                        <img src={process.env.PUBLIC_URL + "/img/icon/warning-triangle.png"} alt="Warning" />
-                        <span>{error}</span>
-                    </p>
-                </div>
-            )}
 
-            <div className={styles.idContainer}>
-                <input
-                    type="text"
-                    placeholder="아이디를 입력해주세요."
-                    value={loginId}
-                    onChange={(e) => setLoginId(e.target.value)}
-                    maxLength={15}
-                    className={styles.inputField1}
-                />
-                <div className={styles.charCountSignup}>{loginId.length}/15</div>
-                <div className={styles.idInfo}>영문/숫자 중에서 6글자 이상 작성해주세요.</div>
-            </div>
+      {/* 아이디 입력 필드 */}
+      <div className="input-container">
+        <input
+          type="text"
+          placeholder="아이디" 
+          value={loginId} 
+          onChange={(e) => setLoginId(e.target.value)} 
+          className="input-fieldA"
+        />
+        <div className="char-count-login">{loginId.length}/15</div>
+      </div>
 
-            <div className={styles.passwordContainer}>
-                <input
-                    type="password"
-                    placeholder="비밀번호를 입력해주세요."
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    maxLength={20}
-                    className={styles.inputField2}
-                />
-                <div className={styles.charCountSignup}>{password.length}/20</div>
-                <div className={styles.passwordInfo}>영문/숫자/특수문자 중에서 8글자 이상 작성해주세요.</div>
-            </div>
-
-            <button onClick={handleSignup} className={styles.signupButton}>계정 만들기</button>
-        </div>
-    );
+      {/* 비밀번호 입력 필드 */}
+      <div className="input-container">
+        <input
+          type="password"
+          placeholder="비밀번호"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="input-fieldB"
+        />
+        <div className="char-count-login">{password.length}/20</div>
+      </div>
+            
+      {error && 
+        <p className="error-msg">
+          <img src={process.env.PUBLIC_URL + "img/icon/warning-triangle.png"} />
+            <span>{error}</span>
+        </p>}
+      <button onClick={handleLogin} className="login-button">시작하기</button>
+    </div>
+  );
 }
 
-export default Signup;
+export default Login;
