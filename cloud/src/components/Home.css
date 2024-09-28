@@ -25,6 +25,9 @@ body, h1, h2, h3, p, button, input, textarea {
   align-items: center;
   justify-content: center;
   position:relative;
+  min-width: 56.6vh;
+  padding-top: 13vh;
+  max-height: 87vh;
 }
 
 .buttons {
@@ -32,7 +35,7 @@ body, h1, h2, h3, p, button, input, textarea {
   flex-direction: column;
   gap: 24px;
   position:absolute;
-  top:448px;
+  top: 500px; /* 버튼들을 더 아래로 내림 */
 }
 
 .login-btn, .signup-btn {
@@ -46,4 +49,11 @@ body, h1, h2, h3, p, button, input, textarea {
   width: 175px;
   height:55px;
   text-align: center; 
+  font-weight: bold;
+}
+
+
+.logo-image-main {
+  width: 290px;
+  margin-bottom: 30vh; /* 로고와 나머지 요소들의 거리를 더 넓힘 */
 }

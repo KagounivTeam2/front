@@ -1,0 +1,50 @@
+.cloud-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* 구름이 뒤에 있어야 하기 때문에 z-index 낮게 설정 */
+}
+
+.clouds {
+  position: absolute;
+  width: 15vw; /* 구름 크기를 설정 */
+  height: auto; /* 비율 유지 */
+  background-repeat: no-repeat;
+  background-size: contain; /* 이미지 크기 비율 유지하면서 크기 맞춤 */
+  animation: moveClouds 30s linear infinite;
+  opacity: 0.8; /* 약간 투명하게 설정 */
+}
+
+/* 구름 개별 위치를 고정 */
+.cloud1 {
+  top: 5%;
+  left: 5%;
+}
+
+.cloud2 {
+  top: 20%;
+  right: 10%;
+}
+
+.cloud3 {
+  top: 50%;
+  left: 15%;
+}
+
+.cloud4 {
+  top: 80%;
+  right: 5%;
+}
+
+/* 구름이 부드럽게 무한히 움직이는 애니메이션 */
+@keyframes moveClouds {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50vw);
+  }
+}
