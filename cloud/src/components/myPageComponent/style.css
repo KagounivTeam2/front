@@ -1,0 +1,101 @@
+
+.logout-container{
+    position: absolute;  
+    top: 60%;         
+    left: 50%;        
+    transform: translate(-50%, -50%); 
+    width: 270px;
+    height: 98px;
+    background-color: #FAFAFA;
+    border-radius: 14px; 
+    border:1px solid black;
+    div:nth-child(1){
+        text-align: center;
+        font-size:17px;
+        font-weight: 600;
+        padding-top:19px;
+        
+    }
+    
+}
+.logout{
+    position:absolute;
+    font-size: 15px;
+    font-weight: 400;
+    margin:0;
+    padding:0;
+    font-weight:400;
+    top:65px;
+    left:173px;
+    color:#FE8DA5;
+   
+
+}
+.cancel{
+    font-size: 15px;
+    font-weight: 400;
+    position: absolute;
+    top:65px;
+    margin:0;
+    padding:0;
+    font-weight:400;
+    left:52px;
+    
+}
+.logout2{
+    position:absolute;
+    font-size: 15px;
+    font-weight: 400;
+    margin:0;
+    padding:0;
+    font-weight:400;
+    top:110px;
+    left:173px;
+    color:#FE8DA5;
+   
+
+}
+.cancel2{
+    font-size: 15px;
+    font-weight: 400;
+    position: absolute;
+    top:110px;
+    margin:0;
+    padding:0;
+    font-weight:400;
+    left:52px;
+    
+}
+.text2{
+    position:relative;
+    top:30px;
+}
+.delete-container{
+    position: absolute;  
+    top: 60%;         
+    left: 50%;        
+    transform: translate(-50%, -50%); 
+    width: 270px;
+    height: 144px;
+    background-color: #FAFAFA;
+    border-radius: 14px; 
+    border:1px solid black;
+    div:nth-child(1){
+        text-align: center;
+        font-size:17px;
+        font-weight: 600;
+        padding-top:19px;
+        
+    }
+    div:nth-child(2){
+        padding:0px 30px;
+        font-size:13px;
+        font-weight: 400;
+        color:rgba(15,15,15,0.7);
+        position:absolute;
+        top:55px;
+        
+    }
+    
+    
+}
