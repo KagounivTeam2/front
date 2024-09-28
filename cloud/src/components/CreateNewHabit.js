@@ -3,15 +3,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './CreateNewHabit.css';
+import { baseAxios } from "../api/baseAxios";
 
 function CreateNewHabit() {
-  const [habitName, setHabitName] = useState(''); // 습관 이름 상태
+  const [habitName, setHabitName] = useState(""); // 습관 이름 상태
   const [isGoalPeriod, setIsGoalPeriod] = useState(true); // 목표 기간/목표 횟수 상태
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // 드롭다운 토글 상태
   const [goalCount, setGoalCount] = useState(1); // 목표 횟수 상태
   const [startDate, setStartDate] = useState(null); // 시작 날짜 상태
   const [endDate, setEndDate] = useState(null); // 종료 날짜 상태
   const [selectedTheme, setSelectedTheme] = useState(0); // 테마 선택 상태
+  const [isFavorite, setIsFavorite] = useState(false); // 즐겨찾기 상태 추가
   const maxChars = 20; // 최대 글자수 제한
   const navigate = useNavigate();
 
@@ -31,39 +33,47 @@ function CreateNewHabit() {
     setIsGoalPeriod(isPeriod);
     setIsDropdownOpen(false); // 선택 후 드롭다운 닫기
   };
+  const selectTheme = (index) => {
+    setSelectedTheme(index); // 클릭된 테마의 인덱스를 저장
+  };
 
   // 습관 생성 함수
   const createHabit = () => {
-    if (habitName && startDate && endDate) {
+    if (habitName || (startDate && endDate)) {
+      // 테마 색상 매핑
+      const themeMapping = {
+        0: "PINK",
+        1: "BLUE",
+        2: "PURPLE",
+      };
       const newHabit = {
-        title: habitName,
-        startDate: startDate.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' }),
-        endDate: endDate.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' }),
-        theme: selectedTheme
+        habitName, // 습관 이름
+        startAt: startDate !== null ? startDate : null, // 시작 날짜
+        endAt: endDate !== null ? endDate : null, // 종료 날짜
+        targetCount: isGoalPeriod ? 0 : goalCount, // 목표 기간이면 0, 목표 횟수면 설정한 값
+        currentCount: 0, // 초기 값은 0
+        theme: themeMapping[selectedTheme], // 선택한 테마
+        favoriteState: isFavorite, // 즐겨찾기 여부
       };
 
-      // 기존에 저장된 습관 리스트 불러오기
-      const savedHabits = JSON.parse(localStorage.getItem('habits')) || [];
-      if (savedHabits.length >= 5) {
-        alert('습관은 최대 5개까지만 생성할 수 있습니다.');
-        return;
-      }
-      savedHabits.push(newHabit); // 새 습관 추가
-      localStorage.setItem('habits', JSON.stringify(savedHabits)); // 습관 리스트 저장
-
-      // 테마 저장
-      localStorage.setItem('selectedTheme', selectedTheme);
-
-      // MyHabit 페이지로 이동
-      navigate('/my-habit');
+      baseAxios
+        .post("/api/habit/create", newHabit)
+        .then((response) => {
+          if (response.data.success) {
+            alert("습관이 성공적으로 생성되었습니다!");
+            // MyHabit 페이지로 이동
+            navigate("/my-habit");
+          } else {
+            alert(`습관 생성에 실패했습니다: ${response.data.error.message}`);
+          }
+        })
+        .catch((error) => {
+          alert("습관 생성 중 오류가 발생했습니다.");
+          console.error(error);
+        });
     } else {
       alert('모든 필드를 입력해주세요.');
     }
-  };
-
-  // 테마 선택 함수
-  const selectTheme = (index) => {
-    setSelectedTheme(index); // 클릭된 테마의 인덱스를 저장
   };
 
   return (
@@ -96,7 +106,12 @@ function CreateNewHabit() {
       {/* 즐겨찾기 저장하기 */}
       <div className="checkbox-section">
         <label className="favorite-checkbox">
-          <input type="checkbox" className="checkbox" />
+          <input
+            type="checkbox"
+            className="checkbox"
+            checked={isFavorite}
+            onChange={() => setIsFavorite(!isFavorite)}
+          />
           즐겨찾기 저장하기
         </label>
       </div>
