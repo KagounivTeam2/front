@@ -1,0 +1,50 @@
+body{
+  font-family: 'Apple SD Gothic Neo', sans-serif;
+}
+
+.startContainer {
+  padding: 20px;
+  max-width: 400px;
+  min-width: 54.2vh;
+  min-height: 50vh;
+}
+
+.contentWrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.introText {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 50px;
+  letter-spacing: 1px; /* 글자 자간을 1.5px로 설정 */
+  line-height: 1.7; /* 줄 간격 조정 */
+}
+
+.logoImage {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  height: auto;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  margin-top: 80px;
+}
+
+.habitBtn {
+  background-color: rgb(255, 255, 255,0.7);
+  border-radius: 17px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  width: 200px;
+  height: 60px;
+  font-size: 18px;
+  font-weight: bold; /* 텍스트를 두껍게 설정 */
+}
