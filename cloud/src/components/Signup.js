@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Signup.css';
 import { useNavigate } from 'react-router-dom';
+import CloudBackground from './CloudBackground'; // 구름 컴포넌트 불러오기
 
 function Signup() {
   const [background, setBackground] = useState('');
@@ -67,7 +68,9 @@ function Signup() {
   return (
     <div className="signup-container" style={{ background }}>
       <img src={process.env.PUBLIC_URL + "/img/Logo_img.png"} alt="Logo" className="logo-image" />
-      
+      {/* 구름 배경 추가 */}
+      <CloudBackground />
+
       {/* 경고 문구를 아이디 입력 박스 위에 표시 */}
       <div id="error-msg-container">
         {error && (
