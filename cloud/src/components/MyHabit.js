@@ -63,7 +63,7 @@ function MyHabit() {
     try {
       const response = await baseAxios.get("/api/statistics/complete_count");
       console.log(response.data.responseDto);
-      setSuccessCount(response.data.responseDto);
+      setSuccessCount(response.data.responseDto.completeCount);
     } catch (error) {
       console.error("성공 횟수를 가져오는 데 오류가 발생했습니다:", error);
     }
