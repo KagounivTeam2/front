@@ -14,17 +14,17 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
 }
 
 .logo-image {
-  width: 150px; 
-  margin-bottom: 20px; 
+  width: 150px;
+  margin-bottom: 20px;
 }
 
 .id-container{
-  
-  div{
+
+  & div {
     position:absolute;
     top:414px;
     right:35px;
@@ -34,13 +34,13 @@ body {
 }
 
 .password-container{
-  
-  div{
+
+  & div {
     position:absolute;
     top:492px;
     right:35px;
     color: rgba(15, 15, 15, 0.5);
-  } 
+  }
 
 }
 
@@ -51,19 +51,19 @@ body {
   font-family: 'Apple SD Gothic Neo';
   display: flex;
   border-radius: 8px;
-  width: 331px; 
+  width: 331px;
   height: 27px;
   font-size:13px;
-  border: 1px solid rgba(255, 255, 255); 
-  background-color:rgba(255, 255, 255, 0); 
+  border: 1px solid rgba(255, 255, 255);
+  background-color:rgba(255, 255, 255, 0);
 
 }
-.input-field1::placeholder { 
-  color: rgba(15, 15, 15, 0.7); 
+.input-field1::placeholder {
+  color: rgba(15, 15, 15, 0.7);
 }
 
 .input-field2::placeholder {
-  color: rgba(15, 15, 15, 0.7); 
+  color: rgba(15, 15, 15, 0.7);
 }
 .input-field2 {
   position:absolute;
@@ -74,16 +74,16 @@ body {
   font-size:13px;
   margin: 10px 0;
   border-radius: 8px;
-  width: 331px; 
+  width: 331px;
   height: 27px;
   border: 1px solid rgba(255, 255, 255);
-  background-color:rgba(255, 255, 255, 0); 
-  
+  background-color:rgba(255, 255, 255, 0);
+
 }
 .input-field1:focus,
 .input-field2:focus {
   outline: none;
-  
+
 }
 
 #id{
@@ -109,9 +109,9 @@ body {
   border-radius: 16px;
   font-size: 16px;
   cursor: pointer;
-  width: 175px; 
+  width: 175px;
   height: 55px;
-  border: none; 
+  border: none;
   position:absolute;
   top:621px;
 
@@ -124,7 +124,7 @@ body {
   top:370px;
   left:25px;
   font-size: 11px;
-  span{
+  & span {
     padding-left:3px;
   }
 }
