@@ -13,7 +13,8 @@ body {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  min-width: 56.6vh; /* 가로 길이 폰 사이즈 맞추기 */
+  margin: auto;
+  width: 100vw;
   min-height: 100vh;
   overflow: hidden; /* 구름이 넘칠 때 숨김 */
 }
