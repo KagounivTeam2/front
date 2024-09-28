@@ -7,10 +7,14 @@ import AddHabit from './components/AddHabit';
 import CreateNewHabit from './components/CreateNewHabit';
 import Home from './components/Home';
 import MyHabit from './components/MyHabit';
+import MyPage from './components/MyPage';
+
 
 
 function App() {
   return (
+    <>
+    
     <Router>
       <Routes>
         <Route path="/" element={<StartPage />} />
@@ -20,9 +24,14 @@ function App() {
         <Route path="/create-habit" element={<CreateNewHabit />} />
         <Route path="/my-habit" element={<MyHabit />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/mypage" element={<MyPage />} />
+
         {/* 다른 경로 추가 가능 */}
       </Routes>
     </Router>
+    </>
+    
+    
   );
 }
 
