@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo-Regular.woff2') format('woff2'),
+           url('https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo-Regular.ttf') format('truetype');
+  }
+  
+  body {
+    box-sizing: border-box;
+    margin: 0; 
+    font-family: 'Apple SD Gothic Neo';
+    
+    }
+  .title-container{
+    display: flex;
+
+  }
+  .mypage-container{
+    position:relative;
+    font-family: 'Apple SD Gothic Neo';
+    width:393px;
+    height: 100vh;
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #FAFAFA;
+    border:1px solid black;
+    padding:0;
+    div{
+        position:absolute;
+        background-color: #FFDADD;
+        width:331px;
+        height:47px;
+        border-radius: 8px;
+        margin-bottom:10px;
+        font-size:13px;
+        font-weight: 500;
+    }
+    div:first-child {
+        
+        top:138px;
+        background-color: #FAFAFA;
+        font-size:15px;
+        font-weight: 600;
+    }
+    
+    div:nth-child(2){
+        top:165px;
+        line-height: 47px;
+        padding-left:10px;
+    }
+    div:nth-child(3){
+        top:220px;
+        line-height: 47px;
+        padding-left:10px;
+    }
+  }

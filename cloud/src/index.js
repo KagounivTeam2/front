@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client'; // 'react-dom/client'로 변경
 import App from './App';
 
-ReactDOM.render(
-  <React.StrictMode>
+const root = ReactDOM.createRoot(document.getElementById('root')); // createRoot 사용
+root.render(
+  
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  
 );
