@@ -9,7 +9,7 @@ body, h1, h2, h3, p, button, input, textarea {
     padding: 20px;
     transition: background 0.5s ease;
     max-width: 400px;
-    min-width: 50vh;
+    min-width: 51vh;
     min-height: 96vh;
     justify-content: space-between;
 }
@@ -183,13 +183,25 @@ body, h1, h2, h3, p, button, input, textarea {
     margin-top: 5px;
 }
 
+
 /* 수행 완료 아래 텍스트 */
 .complete-status {
-    font-size: 12px; /* 작게 설정 */
-    color: rgb(0, 0, 0); /* 회색 텍스트 */
-    margin-top: 10px;
-    text-align: center;
+  font-size: 12px; /* 작게 설정 */
+  color: rgb(0, 0, 0); /* 검정색 텍스트 */
+  margin-top: 10px;
+  text-align: center;
 }
+
+.hidden {
+  visibility: hidden; /* 애니메이션 중일 때 텍스트 숨김 */
+}
+
+
+.plant-stage-3-completed .complete-status {
+  visibility: visible; /* 애니메이션이 끝난 후 보이도록 설정 */
+}
+
+
 
 .habit-button {
     background: none;
@@ -227,18 +239,20 @@ body, h1, h2, h3, p, button, input, textarea {
 
 /* 수행 완료 버튼 */
 .complete-button {
-    padding: 15px;
-    font-size: 18px;
-    width: 180px;
-    background-color: rgb(255, 255, 255, 0.8);
-    color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 11vh auto 0 auto; /* 상단에 50px의 여백을 추가하여 버튼을 아래로 내림 */
-    display: block; /* 블록 요소로 변환 */
-    }
+  padding: 15px;
+  font-size: 18px;
+  width: 180px;
+  background-color: rgb(255, 255, 255, 0.8);
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 11vh auto 0 auto;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+}
 
 .complete-button:hover {
     background-color: rgb(255, 255, 255, 0.5);
@@ -373,90 +387,78 @@ body, h1, h2, h3, p, button, input, textarea {
     }
   }
   
-  /* 식물 애니메이션 */
-  .plant-container {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    height: 100px; /* 전체 높이를 설정하여 식물들이 같은 높이에서 자라도록 함 */
-  }
-  
-  .plant {
-    position: absolute;
-    bottom: 0;
-  }
-  
-  .plant-stage-1 {
+
+
+
+  /* MyHabit 스타일 파일 */
+
+/* 식물 애니메이션 */
+.plant-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  height: 100px; /* 전체 높이를 설정하여 식물들이 같은 높이에서 자라도록 함 */
+}
+
+.plant {
+  position: absolute;
+  bottom: 0;
+}
+
+.plant-stage-1 {
+  opacity: 0;
+  z-index: 3; /* 가장 앞에 위치 */
+  right: 0px;
+  animation: plant-grow-1 1s forwards;
+}
+
+.plant-stage-2 {
+  opacity: 0;
+  left: -9px;
+  z-index: 2; /* 중간 레이어 */
+  animation: plant-grow-2 1s forwards;
+}
+
+.plant-stage-3 {
+  opacity: 0;
+  left: 25px; /* 오른쪽으로 이동 */
+  bottom: -7px;
+  z-index: 1; /* 가장 뒤에 위치 */
+  animation: plant-grow-3 1s forwards;
+}
+
+@keyframes plant-grow-1 {
+  0% {
     opacity: 0;
-    z-index: 1; /* 가장 앞에 위치 */
-    right: 10px;
-    animation: plant-grow-1 1s forwards;
+    transform: translateY(20px) translateX(-50%);
   }
-  
-  .plant-stage-2 {
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+}
+
+@keyframes plant-grow-2 {
+  0% {
     opacity: 0;
-    left: 23px; /* 오른쪽으로 이동 */
-    z-index: 2; /* 중간 레이어 */
-    animation: plant-grow-2 1s forwards;
+    transform: translateY(20px) translateX(-50%);
   }
-  
-  .plant-stage-3 {
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+}
+
+@keyframes plant-grow-3 {
+  0% {
     opacity: 0;
-    left: 50px; /* 오른쪽으로 이동 */
-    bottom: -5px;
-    z-index: 1; /* 가장 뒤에 위치 */
-    animation: plant-grow-3 1s forwards;
+    transform: translateY(20px) translateX(-50%);
   }
-  
-  @keyframes plant-grow-1 {
-    0% {
-      opacity: 0;
-      transform: translateY(20px) translateX(-50%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) translateX(-50%);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
   }
-  
-  @keyframes plant-grow-2 {
-    0% {
-      opacity: 0;
-      transform: translateY(20px) translateX(-50%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) translateX(-50%);
-    }
-  }
-  
-  @keyframes plant-grow-3 {
-    0% {
-      opacity: 0;
-      transform: translateY(20px) translateX(-50%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) translateX(-50%);
-    }
-  }
-  
-  /* 수행 완료 버튼 */
-  .complete-button {
-    padding: 15px;
-    font-size: 18px;
-    width: 180px;
-    background-color: rgb(255, 255, 255, 0.8);
-    color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 11vh auto 0 auto;
-    display: block;
-    font-weight: bold;
-    text-align: center;
-  }
-  
+}
+

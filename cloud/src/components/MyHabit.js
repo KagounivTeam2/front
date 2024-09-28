@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './MyHabit.css';
 
-
 function MyHabit() {
   const [selectedTab, setSelectedTab] = useState('habit'); // 탭 상태 (나의 습관 or 통계)
   const [showAllHabits, setShowAllHabits] = useState(false); // 습관 전체보기 토글 상태
@@ -12,6 +11,8 @@ function MyHabit() {
   const [isRaining, setIsRaining] = useState(false); // 비 내리는 상태
   const [plantStage, setPlantStage] = useState(0); // 식물 단계 상태
   const [completed, setCompleted] = useState(false); // 완료 상태
+  const [statusText, setStatusText] = useState('진행중'); // 진행 상태 텍스트
+  const [textVisible, setTextVisible] = useState(true); // 텍스트 가시성 상태
   const [buttonVisible, setButtonVisible] = useState(true); // 수행 완료 버튼의 가시성
 
   // 현재 날짜 가져오기
@@ -38,26 +39,29 @@ function MyHabit() {
   const handleComplete = () => {
     setIsRaining(true);
     setButtonVisible(false); // 수행 완료 버튼 숨김
+    setTextVisible(false); // 텍스트도 숨김
 
     // 2초 후에 비가 멈추고 식물 애니메이션 시작
     setTimeout(() => {
-      setIsRaining(false); 
-      setPlantStage(1); 
-      setTimeout(() => setPlantStage(2), 1000); 
-      setTimeout(() => setPlantStage(3), 2000); 
-      
+      setIsRaining(false);
+      setPlantStage(1);
+      setTimeout(() => setPlantStage(2), 1000);
+      setTimeout(() => setPlantStage(3), 2000);
+
       // 식물 애니메이션이 끝난 후 완료 체크 버튼으로 전환
       setTimeout(() => {
         setCompleted(true);
+        setStatusText('달성 완료'); // 텍스트를 달성 완료로 변경
+        setTextVisible(true); // 텍스트 다시 보이게 설정
       }, 3000);
     }, 2000);
   };
 
   // 테마에 따라 배경과 구름 이미지를 변경
   const themeSettings = [
-    { background: 'linear-gradient(to bottom, #79CCFF, #D5FCFF)', cloudImage: 'Day_cloud.png' },  // Day 테마
-    { background: 'linear-gradient(to bottom, #FEA0B8, #FEE8D4)', cloudImage: 'Evening_cloud.png' },  // Evening 테마
-    { background: 'linear-gradient(to bottom, #635FB8, #E2DAC7)', cloudImage: 'night_cloud.png' }   // Night 테마
+    { background: 'linear-gradient(to bottom, #79CCFF, #D5FCFF)', cloudImage: 'Day_cloud.png' }, // Day 테마
+    { background: 'linear-gradient(to bottom, #FEA0B8, #FEE8D4)', cloudImage: 'Evening_cloud.png' }, // Evening 테마
+    { background: 'linear-gradient(to bottom, #635FB8, #E2DAC7)', cloudImage: 'night_cloud.png' } // Night 테마
   ];
 
   return (
@@ -86,8 +90,8 @@ function MyHabit() {
           {/* 습관 추가 및 전체 보기 */}
           <div className="habit-actions">
             <Link to="/add-habit" className="add-habit-button"> + 습관 추가</Link>
-            <button 
-              onClick={() => setShowAllHabits(!showAllHabits)} 
+            <button
+              onClick={() => setShowAllHabits(!showAllHabits)}
               className="toggle-habits-button"
             >
               {showAllHabits ? '습관 숨기기' : '습관 전체보기 ▼'}
@@ -124,12 +128,9 @@ function MyHabit() {
           {completed && <button className="complete-button">✔</button>}
 
           {/* 완료 여부에 따른 상태 텍스트 변경 */}
-          {/* 비가 내리고 있을 때는 텍스트 숨김 */}
-          {!isRaining && (
-            <div className="complete-status">
-              {completed ? "달성 완료" : `${today} 진행중`}
-            </div>
-          )}
+          <div className={`complete-status ${textVisible ? '' : 'hidden'}`}>
+            {`${today} ${statusText}`}
+          </div>
         </>
       )}
 
