@@ -15,17 +15,17 @@ function Signup() {
     const setTimeBasedBackground = () => {
         const currentHour = new Date().getHours();
 
-        if (currentHour >= 9 && currentHour < 15) {
-            // 09:00 ~ 15:00
-            setBackground('linear-gradient(to bottom, #FEA0B8, #FEE8D4)');
+        if (currentHour >= 6 && currentHour < 15) {
+          // 06:00 ~ 15:00
+          setBackground('linear-gradient(to bottom, #FEA0B8, #FEE8D4)'); // Day 테마
         } else if (currentHour >= 15 && currentHour < 20) {
-            // 15:00 ~ 20:00
-            setBackground('linear-gradient(to bottom, #79CCFF, #D5FCFF)');
+          // 15:00 ~ 20:00
+          setBackground('linear-gradient(to bottom, #79CCFF, #D5FCFF)'); // Evening 테마
         } else {
-            // 20:00 ~ 06:00
-            setBackground('linear-gradient(to bottom, #635FB8, #E2DAC7)');
+          // 20:00 ~ 06:00
+          setBackground('linear-gradient(to bottom, #635FB8, #E2DAC7)'); // Night 테마
         }
-    };
+      };
 
     const handleSignup = async () => {
         if (!loginId || !password) {

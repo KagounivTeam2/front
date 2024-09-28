@@ -1,12 +1,20 @@
-body{
+body {
   font-family: 'Apple SD Gothic Neo', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .startContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
-  max-width: 400px;
-  min-width: 54.2vh;
-  min-height: 50vh;
+  min-width: 56.6vh; /* 가로 길이 폰 사이즈 맞추기 */
+  min-height: 100vh;
+  overflow: hidden; /* 구름이 넘칠 때 숨김 */
 }
 
 .contentWrapper {
@@ -18,8 +26,8 @@ body{
   color: white;
   font-size: 18px;
   margin-bottom: 50px;
-  letter-spacing: 1px; /* 글자 자간을 1.5px로 설정 */
-  line-height: 1.7; /* 줄 간격 조정 */
+  letter-spacing: 1px; /* 글자 자간 */
+  line-height: 1.7; /* 줄 간격 */
 }
 
 .logoImage {
@@ -29,22 +37,77 @@ body{
   height: auto;
 }
 
+.header {
+  display: flex;
+  justify-content: center; /* 로고를 중앙 정렬 */
+  align-items: center;
+  position: absolute;
+  top: 40px; /* 상단에서 20px 띄움 */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logoHeader {
+  width: 80px; /* 로고 크기 */
+  height: auto;
+}
+
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 17px;
-  margin-top: 80px;
+  margin-top: 30px; /* 버튼과 로고 간 간격 조정 */
+  flex-wrap: wrap; /* 작은 화면에서 버튼이 여러 줄로 표시 */
 }
 
 .habitBtn {
-  background-color: rgb(255, 255, 255,0.7);
+  background-color: rgba(255, 255, 255, 0.7); /* 약간 투명한 배경 */
   border-radius: 17px;
   padding: 10px 20px;
   cursor: pointer;
   border: none;
-  width: 200px;
-  height: 60px;
-  font-size: 18px;
-  font-weight: bold; /* 텍스트를 두껍게 설정 */
+  width: 150px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.habitBtn:hover {
+  background-color: rgba(255, 255, 255, 0.9); /* 호버 시 배경색 밝게 */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .logoImage {
+    width: 250px;
+  }
+  
+  .habitBtn {
+    width: 140px;
+    height: 45px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoImage {
+    width: 200px;
+  }
+
+  .habitBtn {
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+
+.logoImage {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+  height: auto;
+  margin-top: -50px; /* 메인 로고를 위로 올리기 위한 margin-top 설정 */
 }
