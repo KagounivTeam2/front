@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes,Redirect } from 'react-router-dom';
 import StartPage from './components/StartPage';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -15,8 +15,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<StartPage />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<StartPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/add-habit" element={<AddHabit />} />
